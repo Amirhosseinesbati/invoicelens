@@ -1,0 +1,27 @@
+.env
+.venv/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/*.py[cod]
+.uv-cache/
+.uv-python/
+.pnpm-store/
+**/node_modules/
+**/dist/
+/data/
+/generated/
+/tmp/
+screenshots/tmp/
+*.sqlite3
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.tsbuildinfo
+*.log
+
+# Local product brief; excluded from the public portfolio repository.
+/02-invoicelens.md

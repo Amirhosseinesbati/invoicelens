@@ -1,0 +1,71 @@
+name: checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  api-and-data:
+    runs-on: ubuntu-24.04
+    env:
+      INVOICELENS_MODE: DEMO
+      INVOICELENS_DATABASE_URL: sqlite:///${{ runner.temp }}/invoicelens-ci.db
+      INVOICELENS_STORAGE_ROOT: ${{ runner.temp }}/invoicelens-storage
+      INVOICELENS_CHECKPOINT_PATH: ${{ runner.temp }}/invoicelens-checkpoints.sqlite
+      INVOICELENS_SECRET_KEY: ci-only-secret-not-for-deployment
+      INVOICELENS_AUTO_WORKER: "false"
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@v9
+        with:
+          python-version: "3.12"
+      - name: Install OCR and raster tools
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends poppler-utils tesseract-ocr
+      - name: Install locked Python dependencies
+        run: uv sync --project apps/api --frozen
+      - name: Lint API
+        run: uv run --project apps/api ruff check apps/api/src tests/backend
+      - name: Typecheck API
+        run: uv run --project apps/api --frozen ty check apps/api/src/invoicelens
+      - name: Test API
+        run: uv run --project apps/api pytest -q tests/backend
+      - name: Migrate fresh database
+        run: uv run --project apps/api alembic -c apps/api/alembic.ini upgrade head
+      - name: Generate and check synthetic fixtures
+        run: |
+          uv run --project apps/api python scripts/generate_dataset.py --preset fast
+          uv run --project apps/api pytest -q evals/test_generator.py evals/test_runner.py evals/test_export_predictions.py
+          uv run --project apps/api python evals/runner.py --help
+      - name: Export generated OpenAPI contract
+        run: uv run --project apps/api --frozen python -m invoicelens.export_openapi > openapi.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: invoicelens-openapi
+          path: openapi.json
+
+  web:
+    runs-on: ubuntu-24.04
+    needs: api-and-data
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/download-artifact@v4
+        with:
+          name: invoicelens-openapi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+      - name: Install locked web dependencies
+        run: pnpm -C apps/web install --frozen-lockfile
+      - name: Check TypeScript API contract against OpenAPI
+        run: pnpm -C apps/web check:api
+        env:
+          OPENAPI_SPEC: ../../openapi.json
+      - name: Lint web
+        run: pnpm -C apps/web lint
+      - name: Typecheck web
+        run: pnpm -C apps/web typecheck
+      - name: Build web
+        run: pnpm -C apps/web build

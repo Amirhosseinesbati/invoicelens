@@ -1,0 +1,2814 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-09-28T09:03:40.354311+00:00",
+  "dataset": "Synthetic demo dataset",
+  "seed": 20260927,
+  "reference_date": "2026-09-27",
+  "inventory": {
+    "documents": 300,
+    "types": {
+      "purchase_order": 60,
+      "invoice": 220,
+      "credit_note": 20
+    },
+    "invoice_lines": 1367,
+    "scanned": 90,
+    "held_out_layouts": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "labeled_findings": 75
+  },
+  "quality_status": "measured",
+  "targets": {
+    "held_out_core_exact_match": 0.95,
+    "held_out_line_f1": 0.9,
+    "finding_precision": 0.9,
+    "finding_recall": 0.9
+  },
+  "prediction_coverage": {
+    "documents": 300,
+    "truth_documents": 300
+  },
+  "processing_statuses": {
+    "complete": 300
+  },
+  "prediction_system": "InvoiceLens DEMO persisted workflow outputs",
+  "splits": {
+    "development": {
+      "native": {
+        "extraction": {
+          "invoices": 120,
+          "predicted_invoices": 120,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 120,
+              "expected": 120,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "date": {
+              "correct": 120,
+              "expected": 120,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "currency": {
+              "correct": 120,
+              "expected": 120,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "invoice_number": {
+              "correct": 120,
+              "expected": 120,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "total": {
+              "correct": 120,
+              "expected": 120,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            }
+          },
+          "core_micro_exact_match": 1.0,
+          "line_fields": {
+            "sku": {
+              "true_positive": 703,
+              "expected": 735,
+              "predicted": 729,
+              "false_negative": 32,
+              "false_positive": 26,
+              "precision": 0.9643347050754458,
+              "recall": 0.9564625850340136,
+              "f1": 0.9603825136612022
+            },
+            "description": {
+              "true_positive": 675,
+              "expected": 735,
+              "predicted": 729,
+              "false_negative": 60,
+              "false_positive": 54,
+              "precision": 0.9259259259259259,
+              "recall": 0.9183673469387755,
+              "f1": 0.9221311475409836
+            },
+            "quantity": {
+              "true_positive": 703,
+              "expected": 735,
+              "predicted": 727,
+              "false_negative": 32,
+              "false_positive": 24,
+              "precision": 0.9669876203576341,
+              "recall": 0.9564625850340136,
+              "f1": 0.9616963064295485
+            },
+            "unit": {
+              "true_positive": 703,
+              "expected": 735,
+              "predicted": 703,
+              "false_negative": 32,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9564625850340136,
+              "f1": 0.9777468706536857
+            },
+            "unit_price": {
+              "true_positive": 703,
+              "expected": 735,
+              "predicted": 703,
+              "false_negative": 32,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9564625850340136,
+              "f1": 0.9777468706536857
+            },
+            "line_amount": {
+              "true_positive": 703,
+              "expected": 735,
+              "predicted": 703,
+              "false_negative": 32,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9564625850340136,
+              "f1": 0.9777468706536857
+            }
+          },
+          "line_micro": {
+            "true_positive": 4190,
+            "expected": 4410,
+            "predicted": 4294,
+            "false_negative": 220,
+            "false_positive": 104,
+            "precision": 0.975780158360503,
+            "recall": 0.9501133786848073,
+            "f1": 0.9627757352941176
+          }
+        },
+        "findings": {
+          "true_positive": 34,
+          "expected": 37,
+          "predicted": 55,
+          "false_negative": 3,
+          "false_positive": 21,
+          "precision": 0.6181818181818182,
+          "recall": 0.918918918918919,
+          "f1": 0.7391304347826086,
+          "clean_negative_documents": 134,
+          "false_positive_examples": [
+            {
+              "id": "INV-0007",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0029",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0073",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0095",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0115",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0117",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0121",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0139",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0159",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0159",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0161",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0162",
+              "kind": "quantity_mismatch"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0021",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "ambiguous_vendor_match"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "INV-0007",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0029",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0073",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0095",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0115",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0117",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0121",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0139",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0159",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0161",
+              "kind": "unmapped:sku_not_on_po"
+            }
+          ],
+          "ambiguous_expected": 4
+        }
+      },
+      "scanned": {
+        "extraction": {
+          "invoices": 56,
+          "predicted_invoices": 56,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 55,
+              "expected": 56,
+              "missing": 1,
+              "incorrect": 0,
+              "exact_match": 0.9821428571428571
+            },
+            "date": {
+              "correct": 55,
+              "expected": 56,
+              "missing": 1,
+              "incorrect": 0,
+              "exact_match": 0.9821428571428571
+            },
+            "currency": {
+              "correct": 53,
+              "expected": 56,
+              "missing": 3,
+              "incorrect": 0,
+              "exact_match": 0.9464285714285714
+            },
+            "invoice_number": {
+              "correct": 44,
+              "expected": 56,
+              "missing": 0,
+              "incorrect": 12,
+              "exact_match": 0.7857142857142857
+            },
+            "total": {
+              "correct": 54,
+              "expected": 56,
+              "missing": 1,
+              "incorrect": 1,
+              "exact_match": 0.9642857142857143
+            }
+          },
+          "core_micro_exact_match": 0.9321428571428572,
+          "line_fields": {
+            "sku": {
+              "true_positive": 346,
+              "expected": 363,
+              "predicted": 359,
+              "false_negative": 17,
+              "false_positive": 13,
+              "precision": 0.9637883008356546,
+              "recall": 0.953168044077135,
+              "f1": 0.9584487534626038
+            },
+            "description": {
+              "true_positive": 266,
+              "expected": 363,
+              "predicted": 359,
+              "false_negative": 97,
+              "false_positive": 93,
+              "precision": 0.7409470752089137,
+              "recall": 0.7327823691460055,
+              "f1": 0.7368421052631579
+            },
+            "quantity": {
+              "true_positive": 297,
+              "expected": 363,
+              "predicted": 312,
+              "false_negative": 66,
+              "false_positive": 15,
+              "precision": 0.9519230769230769,
+              "recall": 0.8181818181818182,
+              "f1": 0.88
+            },
+            "unit": {
+              "true_positive": 342,
+              "expected": 363,
+              "predicted": 355,
+              "false_negative": 21,
+              "false_positive": 13,
+              "precision": 0.9633802816901409,
+              "recall": 0.9421487603305785,
+              "f1": 0.9526462395543176
+            },
+            "unit_price": {
+              "true_positive": 339,
+              "expected": 363,
+              "predicted": 359,
+              "false_negative": 24,
+              "false_positive": 20,
+              "precision": 0.9442896935933147,
+              "recall": 0.9338842975206612,
+              "f1": 0.9390581717451524
+            },
+            "line_amount": {
+              "true_positive": 336,
+              "expected": 363,
+              "predicted": 350,
+              "false_negative": 27,
+              "false_positive": 14,
+              "precision": 0.96,
+              "recall": 0.9256198347107438,
+              "f1": 0.9424964936886395
+            }
+          },
+          "line_micro": {
+            "true_positive": 1926,
+            "expected": 2178,
+            "predicted": 2094,
+            "false_negative": 252,
+            "false_positive": 168,
+            "precision": 0.9197707736389685,
+            "recall": 0.8842975206611571,
+            "f1": 0.901685393258427
+          }
+        },
+        "findings": {
+          "true_positive": 20,
+          "expected": 23,
+          "predicted": 60,
+          "false_negative": 3,
+          "false_positive": 40,
+          "precision": 0.3333333333333333,
+          "recall": 0.8695652173913043,
+          "f1": 0.4819277108433735,
+          "clean_negative_documents": 51,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0001",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0003",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0005",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0007",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0011",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0015",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0015",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0002",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0002",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0028",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0078",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0097",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0106",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0112",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0116",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0128",
+              "kind": "unit_price_mismatch"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0075",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0156",
+              "kind": "quantity_mismatch"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "INV-0002",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "CRN-0003",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0078",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0106",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0112",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0116",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "CRN-0011",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0128",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0132",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0132",
+              "kind": "unmapped:missing_vendor"
+            },
+            {
+              "id": "INV-0141",
+              "kind": "unmapped:missing_total"
+            },
+            {
+              "id": "INV-0156",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0163",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0015",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0169",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0176",
+              "kind": "unmapped:sku_not_on_po"
+            }
+          ],
+          "ambiguous_expected": 0
+        }
+      },
+      "all": {
+        "extraction": {
+          "invoices": 176,
+          "predicted_invoices": 176,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 175,
+              "expected": 176,
+              "missing": 1,
+              "incorrect": 0,
+              "exact_match": 0.9943181818181818
+            },
+            "date": {
+              "correct": 175,
+              "expected": 176,
+              "missing": 1,
+              "incorrect": 0,
+              "exact_match": 0.9943181818181818
+            },
+            "currency": {
+              "correct": 173,
+              "expected": 176,
+              "missing": 3,
+              "incorrect": 0,
+              "exact_match": 0.9829545454545454
+            },
+            "invoice_number": {
+              "correct": 164,
+              "expected": 176,
+              "missing": 0,
+              "incorrect": 12,
+              "exact_match": 0.9318181818181818
+            },
+            "total": {
+              "correct": 174,
+              "expected": 176,
+              "missing": 1,
+              "incorrect": 1,
+              "exact_match": 0.9886363636363636
+            }
+          },
+          "core_micro_exact_match": 0.9784090909090909,
+          "line_fields": {
+            "sku": {
+              "true_positive": 1049,
+              "expected": 1098,
+              "predicted": 1088,
+              "false_negative": 49,
+              "false_positive": 39,
+              "precision": 0.9641544117647058,
+              "recall": 0.9553734061930783,
+              "f1": 0.959743824336688
+            },
+            "description": {
+              "true_positive": 941,
+              "expected": 1098,
+              "predicted": 1088,
+              "false_negative": 157,
+              "false_positive": 147,
+              "precision": 0.8648897058823529,
+              "recall": 0.8570127504553734,
+              "f1": 0.8609332113449222
+            },
+            "quantity": {
+              "true_positive": 1000,
+              "expected": 1098,
+              "predicted": 1039,
+              "false_negative": 98,
+              "false_positive": 39,
+              "precision": 0.9624639076034649,
+              "recall": 0.9107468123861566,
+              "f1": 0.9358914365933552
+            },
+            "unit": {
+              "true_positive": 1045,
+              "expected": 1098,
+              "predicted": 1058,
+              "false_negative": 53,
+              "false_positive": 13,
+              "precision": 0.9877126654064272,
+              "recall": 0.9517304189435337,
+              "f1": 0.9693877551020408
+            },
+            "unit_price": {
+              "true_positive": 1042,
+              "expected": 1098,
+              "predicted": 1062,
+              "false_negative": 56,
+              "false_positive": 20,
+              "precision": 0.9811676082862524,
+              "recall": 0.9489981785063752,
+              "f1": 0.9648148148148148
+            },
+            "line_amount": {
+              "true_positive": 1039,
+              "expected": 1098,
+              "predicted": 1053,
+              "false_negative": 59,
+              "false_positive": 14,
+              "precision": 0.9867046533713201,
+              "recall": 0.9462659380692168,
+              "f1": 0.9660622966062297
+            }
+          },
+          "line_micro": {
+            "true_positive": 6116,
+            "expected": 6588,
+            "predicted": 6388,
+            "false_negative": 472,
+            "false_positive": 272,
+            "precision": 0.9574201628052599,
+            "recall": 0.928354584092289,
+            "f1": 0.9426633785450061
+          }
+        },
+        "findings": {
+          "true_positive": 54,
+          "expected": 60,
+          "predicted": 115,
+          "false_negative": 6,
+          "false_positive": 61,
+          "precision": 0.46956521739130436,
+          "recall": 0.9,
+          "f1": 0.6171428571428571,
+          "clean_negative_documents": 185,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0001",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0003",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0005",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0007",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0011",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0015",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0015",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0002",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0002",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0007",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0028",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0029",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0073",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0078",
+              "kind": "unmapped:sku_not_on_po"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0021",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0156",
+              "kind": "quantity_mismatch"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "INV-0002",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0007",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0029",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "CRN-0003",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0073",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0078",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0095",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0106",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0112",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0115",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0116",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0117",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0121",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "CRN-0011",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0128",
+              "kind": "unmapped:sku_not_on_po"
+            }
+          ],
+          "ambiguous_expected": 4
+        }
+      }
+    },
+    "held_out": {
+      "native": {
+        "extraction": {
+          "invoices": 30,
+          "predicted_invoices": 30,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 30,
+              "expected": 30,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "date": {
+              "correct": 30,
+              "expected": 30,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "currency": {
+              "correct": 30,
+              "expected": 30,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "invoice_number": {
+              "correct": 30,
+              "expected": 30,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "total": {
+              "correct": 30,
+              "expected": 30,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            }
+          },
+          "core_micro_exact_match": 1.0,
+          "line_fields": {
+            "sku": {
+              "true_positive": 168,
+              "expected": 176,
+              "predicted": 175,
+              "false_negative": 8,
+              "false_positive": 7,
+              "precision": 0.96,
+              "recall": 0.9545454545454546,
+              "f1": 0.9572649572649573
+            },
+            "description": {
+              "true_positive": 161,
+              "expected": 176,
+              "predicted": 175,
+              "false_negative": 15,
+              "false_positive": 14,
+              "precision": 0.92,
+              "recall": 0.9147727272727273,
+              "f1": 0.9173789173789174
+            },
+            "quantity": {
+              "true_positive": 168,
+              "expected": 176,
+              "predicted": 174,
+              "false_negative": 8,
+              "false_positive": 6,
+              "precision": 0.9655172413793104,
+              "recall": 0.9545454545454546,
+              "f1": 0.96
+            },
+            "unit": {
+              "true_positive": 168,
+              "expected": 176,
+              "predicted": 168,
+              "false_negative": 8,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9545454545454546,
+              "f1": 0.9767441860465116
+            },
+            "unit_price": {
+              "true_positive": 168,
+              "expected": 176,
+              "predicted": 168,
+              "false_negative": 8,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9545454545454546,
+              "f1": 0.9767441860465116
+            },
+            "line_amount": {
+              "true_positive": 168,
+              "expected": 176,
+              "predicted": 168,
+              "false_negative": 8,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9545454545454546,
+              "f1": 0.9767441860465116
+            }
+          },
+          "line_micro": {
+            "true_positive": 1001,
+            "expected": 1056,
+            "predicted": 1028,
+            "false_negative": 55,
+            "false_positive": 27,
+            "precision": 0.9737354085603113,
+            "recall": 0.9479166666666666,
+            "f1": 0.9606525911708254
+          }
+        },
+        "findings": {
+          "true_positive": 11,
+          "expected": 11,
+          "predicted": 13,
+          "false_negative": 0,
+          "false_positive": 2,
+          "precision": 0.8461538461538461,
+          "recall": 1.0,
+          "f1": 0.9166666666666666,
+          "clean_negative_documents": 34,
+          "false_positive_examples": [
+            {
+              "id": "INV-0183",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0205",
+              "kind": "unmapped:sku_not_on_po"
+            }
+          ],
+          "false_negative_examples": [],
+          "unknown_predicted_kinds": [
+            {
+              "id": "INV-0183",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0205",
+              "kind": "unmapped:sku_not_on_po"
+            }
+          ],
+          "ambiguous_expected": 0
+        }
+      },
+      "scanned": {
+        "extraction": {
+          "invoices": 14,
+          "predicted_invoices": 14,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 14,
+              "expected": 14,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "date": {
+              "correct": 12,
+              "expected": 14,
+              "missing": 2,
+              "incorrect": 0,
+              "exact_match": 0.8571428571428571
+            },
+            "currency": {
+              "correct": 14,
+              "expected": 14,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "invoice_number": {
+              "correct": 11,
+              "expected": 14,
+              "missing": 0,
+              "incorrect": 3,
+              "exact_match": 0.7857142857142857
+            },
+            "total": {
+              "correct": 13,
+              "expected": 14,
+              "missing": 1,
+              "incorrect": 0,
+              "exact_match": 0.9285714285714286
+            }
+          },
+          "core_micro_exact_match": 0.9142857142857143,
+          "line_fields": {
+            "sku": {
+              "true_positive": 92,
+              "expected": 93,
+              "predicted": 94,
+              "false_negative": 1,
+              "false_positive": 2,
+              "precision": 0.9787234042553191,
+              "recall": 0.989247311827957,
+              "f1": 0.983957219251337
+            },
+            "description": {
+              "true_positive": 76,
+              "expected": 93,
+              "predicted": 94,
+              "false_negative": 17,
+              "false_positive": 18,
+              "precision": 0.8085106382978723,
+              "recall": 0.8172043010752689,
+              "f1": 0.8128342245989305
+            },
+            "quantity": {
+              "true_positive": 82,
+              "expected": 93,
+              "predicted": 85,
+              "false_negative": 11,
+              "false_positive": 3,
+              "precision": 0.9647058823529412,
+              "recall": 0.8817204301075269,
+              "f1": 0.9213483146067416
+            },
+            "unit": {
+              "true_positive": 92,
+              "expected": 93,
+              "predicted": 93,
+              "false_negative": 1,
+              "false_positive": 1,
+              "precision": 0.989247311827957,
+              "recall": 0.989247311827957,
+              "f1": 0.989247311827957
+            },
+            "unit_price": {
+              "true_positive": 92,
+              "expected": 93,
+              "predicted": 93,
+              "false_negative": 1,
+              "false_positive": 1,
+              "precision": 0.989247311827957,
+              "recall": 0.989247311827957,
+              "f1": 0.989247311827957
+            },
+            "line_amount": {
+              "true_positive": 92,
+              "expected": 93,
+              "predicted": 93,
+              "false_negative": 1,
+              "false_positive": 1,
+              "precision": 0.989247311827957,
+              "recall": 0.989247311827957,
+              "f1": 0.989247311827957
+            }
+          },
+          "line_micro": {
+            "true_positive": 526,
+            "expected": 558,
+            "predicted": 552,
+            "false_negative": 32,
+            "false_positive": 26,
+            "precision": 0.9528985507246377,
+            "recall": 0.942652329749104,
+            "f1": 0.9477477477477477
+          }
+        },
+        "findings": {
+          "true_positive": 2,
+          "expected": 4,
+          "predicted": 11,
+          "false_negative": 2,
+          "false_positive": 9,
+          "precision": 0.18181818181818182,
+          "recall": 0.5,
+          "f1": 0.26666666666666666,
+          "clean_negative_documents": 14,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0017",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:missing_total"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0194",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0200",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0200",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "unmapped:po_selection_required"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0185",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "duplicate_invoice"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:missing_total"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0194",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0200",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0200",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "unmapped:po_selection_required"
+            }
+          ],
+          "ambiguous_expected": 0
+        }
+      },
+      "all": {
+        "extraction": {
+          "invoices": 44,
+          "predicted_invoices": 44,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 44,
+              "expected": 44,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "date": {
+              "correct": 42,
+              "expected": 44,
+              "missing": 2,
+              "incorrect": 0,
+              "exact_match": 0.9545454545454546
+            },
+            "currency": {
+              "correct": 44,
+              "expected": 44,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "invoice_number": {
+              "correct": 41,
+              "expected": 44,
+              "missing": 0,
+              "incorrect": 3,
+              "exact_match": 0.9318181818181818
+            },
+            "total": {
+              "correct": 43,
+              "expected": 44,
+              "missing": 1,
+              "incorrect": 0,
+              "exact_match": 0.9772727272727273
+            }
+          },
+          "core_micro_exact_match": 0.9727272727272728,
+          "line_fields": {
+            "sku": {
+              "true_positive": 260,
+              "expected": 269,
+              "predicted": 269,
+              "false_negative": 9,
+              "false_positive": 9,
+              "precision": 0.966542750929368,
+              "recall": 0.966542750929368,
+              "f1": 0.966542750929368
+            },
+            "description": {
+              "true_positive": 237,
+              "expected": 269,
+              "predicted": 269,
+              "false_negative": 32,
+              "false_positive": 32,
+              "precision": 0.8810408921933085,
+              "recall": 0.8810408921933085,
+              "f1": 0.8810408921933085
+            },
+            "quantity": {
+              "true_positive": 250,
+              "expected": 269,
+              "predicted": 259,
+              "false_negative": 19,
+              "false_positive": 9,
+              "precision": 0.9652509652509652,
+              "recall": 0.929368029739777,
+              "f1": 0.946969696969697
+            },
+            "unit": {
+              "true_positive": 260,
+              "expected": 269,
+              "predicted": 261,
+              "false_negative": 9,
+              "false_positive": 1,
+              "precision": 0.9961685823754789,
+              "recall": 0.966542750929368,
+              "f1": 0.9811320754716981
+            },
+            "unit_price": {
+              "true_positive": 260,
+              "expected": 269,
+              "predicted": 261,
+              "false_negative": 9,
+              "false_positive": 1,
+              "precision": 0.9961685823754789,
+              "recall": 0.966542750929368,
+              "f1": 0.9811320754716981
+            },
+            "line_amount": {
+              "true_positive": 260,
+              "expected": 269,
+              "predicted": 261,
+              "false_negative": 9,
+              "false_positive": 1,
+              "precision": 0.9961685823754789,
+              "recall": 0.966542750929368,
+              "f1": 0.9811320754716981
+            }
+          },
+          "line_micro": {
+            "true_positive": 1527,
+            "expected": 1614,
+            "predicted": 1580,
+            "false_negative": 87,
+            "false_positive": 53,
+            "precision": 0.9664556962025317,
+            "recall": 0.9460966542750929,
+            "f1": 0.9561678146524734
+          }
+        },
+        "findings": {
+          "true_positive": 13,
+          "expected": 15,
+          "predicted": 24,
+          "false_negative": 2,
+          "false_positive": 11,
+          "precision": 0.5416666666666666,
+          "recall": 0.8666666666666667,
+          "f1": 0.6666666666666666,
+          "clean_negative_documents": 48,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0017",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0183",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:missing_total"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0194",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0200",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0200",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0205",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "unmapped:po_selection_required"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0185",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "duplicate_invoice"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "INV-0183",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:missing_total"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0194",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0200",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0200",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0205",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "unmapped:po_selection_required"
+            }
+          ],
+          "ambiguous_expected": 0
+        }
+      }
+    },
+    "all": {
+      "native": {
+        "extraction": {
+          "invoices": 150,
+          "predicted_invoices": 150,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 150,
+              "expected": 150,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "date": {
+              "correct": 150,
+              "expected": 150,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "currency": {
+              "correct": 150,
+              "expected": 150,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "invoice_number": {
+              "correct": 150,
+              "expected": 150,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "total": {
+              "correct": 150,
+              "expected": 150,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            }
+          },
+          "core_micro_exact_match": 1.0,
+          "line_fields": {
+            "sku": {
+              "true_positive": 871,
+              "expected": 911,
+              "predicted": 904,
+              "false_negative": 40,
+              "false_positive": 33,
+              "precision": 0.963495575221239,
+              "recall": 0.9560922063666301,
+              "f1": 0.9597796143250689
+            },
+            "description": {
+              "true_positive": 836,
+              "expected": 911,
+              "predicted": 904,
+              "false_negative": 75,
+              "false_positive": 68,
+              "precision": 0.9247787610619469,
+              "recall": 0.9176728869374314,
+              "f1": 0.9212121212121213
+            },
+            "quantity": {
+              "true_positive": 871,
+              "expected": 911,
+              "predicted": 901,
+              "false_negative": 40,
+              "false_positive": 30,
+              "precision": 0.9667036625971143,
+              "recall": 0.9560922063666301,
+              "f1": 0.9613686534216336
+            },
+            "unit": {
+              "true_positive": 871,
+              "expected": 911,
+              "predicted": 871,
+              "false_negative": 40,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9560922063666301,
+              "f1": 0.9775533108866442
+            },
+            "unit_price": {
+              "true_positive": 871,
+              "expected": 911,
+              "predicted": 871,
+              "false_negative": 40,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9560922063666301,
+              "f1": 0.9775533108866442
+            },
+            "line_amount": {
+              "true_positive": 871,
+              "expected": 911,
+              "predicted": 871,
+              "false_negative": 40,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9560922063666301,
+              "f1": 0.9775533108866442
+            }
+          },
+          "line_micro": {
+            "true_positive": 5191,
+            "expected": 5466,
+            "predicted": 5322,
+            "false_negative": 275,
+            "false_positive": 131,
+            "precision": 0.9753851935362645,
+            "recall": 0.9496889864617636,
+            "f1": 0.9623655913978495
+          }
+        },
+        "findings": {
+          "true_positive": 45,
+          "expected": 48,
+          "predicted": 68,
+          "false_negative": 3,
+          "false_positive": 23,
+          "precision": 0.6617647058823529,
+          "recall": 0.9375,
+          "f1": 0.7758620689655172,
+          "clean_negative_documents": 168,
+          "false_positive_examples": [
+            {
+              "id": "INV-0007",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0029",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0073",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0095",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0115",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0117",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0121",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0139",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0159",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0159",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0161",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0162",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0183",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0205",
+              "kind": "unmapped:sku_not_on_po"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0021",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "ambiguous_vendor_match"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "INV-0007",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0029",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0073",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0095",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0115",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0117",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0121",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0139",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0159",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0161",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0183",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0205",
+              "kind": "unmapped:sku_not_on_po"
+            }
+          ],
+          "ambiguous_expected": 4
+        }
+      },
+      "scanned": {
+        "extraction": {
+          "invoices": 70,
+          "predicted_invoices": 70,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 69,
+              "expected": 70,
+              "missing": 1,
+              "incorrect": 0,
+              "exact_match": 0.9857142857142858
+            },
+            "date": {
+              "correct": 67,
+              "expected": 70,
+              "missing": 3,
+              "incorrect": 0,
+              "exact_match": 0.9571428571428572
+            },
+            "currency": {
+              "correct": 67,
+              "expected": 70,
+              "missing": 3,
+              "incorrect": 0,
+              "exact_match": 0.9571428571428572
+            },
+            "invoice_number": {
+              "correct": 55,
+              "expected": 70,
+              "missing": 0,
+              "incorrect": 15,
+              "exact_match": 0.7857142857142857
+            },
+            "total": {
+              "correct": 67,
+              "expected": 70,
+              "missing": 2,
+              "incorrect": 1,
+              "exact_match": 0.9571428571428572
+            }
+          },
+          "core_micro_exact_match": 0.9285714285714286,
+          "line_fields": {
+            "sku": {
+              "true_positive": 438,
+              "expected": 456,
+              "predicted": 453,
+              "false_negative": 18,
+              "false_positive": 15,
+              "precision": 0.9668874172185431,
+              "recall": 0.9605263157894737,
+              "f1": 0.9636963696369637
+            },
+            "description": {
+              "true_positive": 342,
+              "expected": 456,
+              "predicted": 453,
+              "false_negative": 114,
+              "false_positive": 111,
+              "precision": 0.7549668874172185,
+              "recall": 0.75,
+              "f1": 0.7524752475247525
+            },
+            "quantity": {
+              "true_positive": 379,
+              "expected": 456,
+              "predicted": 397,
+              "false_negative": 77,
+              "false_positive": 18,
+              "precision": 0.9546599496221663,
+              "recall": 0.831140350877193,
+              "f1": 0.8886283704572099
+            },
+            "unit": {
+              "true_positive": 434,
+              "expected": 456,
+              "predicted": 448,
+              "false_negative": 22,
+              "false_positive": 14,
+              "precision": 0.96875,
+              "recall": 0.9517543859649122,
+              "f1": 0.9601769911504425
+            },
+            "unit_price": {
+              "true_positive": 431,
+              "expected": 456,
+              "predicted": 452,
+              "false_negative": 25,
+              "false_positive": 21,
+              "precision": 0.9535398230088495,
+              "recall": 0.9451754385964912,
+              "f1": 0.9493392070484582
+            },
+            "line_amount": {
+              "true_positive": 428,
+              "expected": 456,
+              "predicted": 443,
+              "false_negative": 28,
+              "false_positive": 15,
+              "precision": 0.9661399548532731,
+              "recall": 0.9385964912280702,
+              "f1": 0.9521690767519466
+            }
+          },
+          "line_micro": {
+            "true_positive": 2452,
+            "expected": 2736,
+            "predicted": 2646,
+            "false_negative": 284,
+            "false_positive": 194,
+            "precision": 0.926681783824641,
+            "recall": 0.8961988304093568,
+            "f1": 0.9111854329245633
+          }
+        },
+        "findings": {
+          "true_positive": 22,
+          "expected": 27,
+          "predicted": 71,
+          "false_negative": 5,
+          "false_positive": 49,
+          "precision": 0.30985915492957744,
+          "recall": 0.8148148148148148,
+          "f1": 0.4489795918367347,
+          "clean_negative_documents": 65,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0001",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0003",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0005",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0007",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0011",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0015",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0015",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0017",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0002",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0002",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0028",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0078",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0097",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0106",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0112",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0116",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "unmapped:missing_date"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0075",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0156",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0185",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "duplicate_invoice"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "INV-0002",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "CRN-0003",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0078",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0106",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0112",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0116",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "CRN-0011",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0128",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0132",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0132",
+              "kind": "unmapped:missing_vendor"
+            },
+            {
+              "id": "INV-0141",
+              "kind": "unmapped:missing_total"
+            },
+            {
+              "id": "INV-0156",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0163",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0015",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0169",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0176",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:missing_total"
+            },
+            {
+              "id": "INV-0188",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0194",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0200",
+              "kind": "unmapped:missing_date"
+            }
+          ],
+          "ambiguous_expected": 0
+        }
+      },
+      "all": {
+        "extraction": {
+          "invoices": 220,
+          "predicted_invoices": 220,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 219,
+              "expected": 220,
+              "missing": 1,
+              "incorrect": 0,
+              "exact_match": 0.9954545454545455
+            },
+            "date": {
+              "correct": 217,
+              "expected": 220,
+              "missing": 3,
+              "incorrect": 0,
+              "exact_match": 0.9863636363636363
+            },
+            "currency": {
+              "correct": 217,
+              "expected": 220,
+              "missing": 3,
+              "incorrect": 0,
+              "exact_match": 0.9863636363636363
+            },
+            "invoice_number": {
+              "correct": 205,
+              "expected": 220,
+              "missing": 0,
+              "incorrect": 15,
+              "exact_match": 0.9318181818181818
+            },
+            "total": {
+              "correct": 217,
+              "expected": 220,
+              "missing": 2,
+              "incorrect": 1,
+              "exact_match": 0.9863636363636363
+            }
+          },
+          "core_micro_exact_match": 0.9772727272727273,
+          "line_fields": {
+            "sku": {
+              "true_positive": 1309,
+              "expected": 1367,
+              "predicted": 1357,
+              "false_negative": 58,
+              "false_positive": 48,
+              "precision": 0.9646278555637435,
+              "recall": 0.9575713240673006,
+              "f1": 0.9610866372980911
+            },
+            "description": {
+              "true_positive": 1178,
+              "expected": 1367,
+              "predicted": 1357,
+              "false_negative": 189,
+              "false_positive": 179,
+              "precision": 0.8680913780397936,
+              "recall": 0.8617410387710315,
+              "f1": 0.8649045521292217
+            },
+            "quantity": {
+              "true_positive": 1250,
+              "expected": 1367,
+              "predicted": 1298,
+              "false_negative": 117,
+              "false_positive": 48,
+              "precision": 0.963020030816641,
+              "recall": 0.9144111192392099,
+              "f1": 0.9380863039399625
+            },
+            "unit": {
+              "true_positive": 1305,
+              "expected": 1367,
+              "predicted": 1319,
+              "false_negative": 62,
+              "false_positive": 14,
+              "precision": 0.9893858984078847,
+              "recall": 0.9546452084857352,
+              "f1": 0.9717051377513031
+            },
+            "unit_price": {
+              "true_positive": 1302,
+              "expected": 1367,
+              "predicted": 1323,
+              "false_negative": 65,
+              "false_positive": 21,
+              "precision": 0.9841269841269841,
+              "recall": 0.9524506217995611,
+              "f1": 0.9680297397769517
+            },
+            "line_amount": {
+              "true_positive": 1299,
+              "expected": 1367,
+              "predicted": 1314,
+              "false_negative": 68,
+              "false_positive": 15,
+              "precision": 0.9885844748858448,
+              "recall": 0.950256035113387,
+              "f1": 0.969041402461768
+            }
+          },
+          "line_micro": {
+            "true_positive": 7643,
+            "expected": 8202,
+            "predicted": 7968,
+            "false_negative": 559,
+            "false_positive": 325,
+            "precision": 0.9592118473895582,
+            "recall": 0.9318458912460376,
+            "f1": 0.9453308596165739
+          }
+        },
+        "findings": {
+          "true_positive": 67,
+          "expected": 75,
+          "predicted": 139,
+          "false_negative": 8,
+          "false_positive": 72,
+          "precision": 0.48201438848920863,
+          "recall": 0.8933333333333333,
+          "f1": 0.6261682242990654,
+          "clean_negative_documents": 233,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0001",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0003",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0005",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0007",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0011",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0015",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "CRN-0015",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "CRN-0017",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0002",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0002",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0007",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0028",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0029",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0073",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "unmapped:sku_not_on_po"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0021",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0156",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0185",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "duplicate_invoice"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "INV-0002",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0007",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0018",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0029",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "CRN-0003",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0046",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0073",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0078",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0084",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0095",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0106",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0112",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0115",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0116",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0117",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "unmapped:missing_date"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "unmapped:po_selection_required"
+            },
+            {
+              "id": "INV-0121",
+              "kind": "unmapped:sku_not_on_po"
+            },
+            {
+              "id": "CRN-0011",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0128",
+              "kind": "unmapped:sku_not_on_po"
+            }
+          ],
+          "ambiguous_expected": 4
+        }
+      }
+    }
+  },
+  "target_check": {
+    "held_out_core_exact_match": true,
+    "held_out_line_f1": true,
+    "finding_precision": false,
+    "finding_recall": false
+  }
+}

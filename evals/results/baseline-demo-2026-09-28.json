@@ -1,0 +1,3218 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-09-28T01:06:51.184823+00:00",
+  "dataset": "Synthetic demo dataset",
+  "seed": 20260927,
+  "reference_date": "2026-09-27",
+  "inventory": {
+    "documents": 300,
+    "types": {
+      "purchase_order": 60,
+      "invoice": 220,
+      "credit_note": 20
+    },
+    "invoice_lines": 1367,
+    "scanned": 90,
+    "held_out_layouts": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "labeled_findings": 75
+  },
+  "quality_status": "measured",
+  "targets": {
+    "held_out_core_exact_match": 0.95,
+    "held_out_line_f1": 0.9,
+    "finding_precision": 0.9,
+    "finding_recall": 0.9
+  },
+  "prediction_coverage": {
+    "documents": 300,
+    "truth_documents": 300
+  },
+  "processing_statuses": {
+    "complete": 210,
+    "failed": 90
+  },
+  "prediction_system": "InvoiceLens DEMO persisted workflow outputs",
+  "splits": {
+    "development": {
+      "native": {
+        "extraction": {
+          "invoices": 120,
+          "predicted_invoices": 120,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 120,
+              "expected": 120,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "date": {
+              "correct": 120,
+              "expected": 120,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "currency": {
+              "correct": 120,
+              "expected": 120,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "invoice_number": {
+              "correct": 120,
+              "expected": 120,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "total": {
+              "correct": 115,
+              "expected": 120,
+              "missing": 0,
+              "incorrect": 5,
+              "exact_match": 0.9583333333333334
+            }
+          },
+          "core_micro_exact_match": 0.9916666666666667,
+          "line_fields": {
+            "sku": {
+              "true_positive": 703,
+              "expected": 735,
+              "predicted": 703,
+              "false_negative": 32,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9564625850340136,
+              "f1": 0.9777468706536857
+            },
+            "description": {
+              "true_positive": 703,
+              "expected": 735,
+              "predicted": 703,
+              "false_negative": 32,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9564625850340136,
+              "f1": 0.9777468706536857
+            },
+            "quantity": {
+              "true_positive": 703,
+              "expected": 735,
+              "predicted": 703,
+              "false_negative": 32,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9564625850340136,
+              "f1": 0.9777468706536857
+            },
+            "unit": {
+              "true_positive": 703,
+              "expected": 735,
+              "predicted": 703,
+              "false_negative": 32,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9564625850340136,
+              "f1": 0.9777468706536857
+            },
+            "unit_price": {
+              "true_positive": 703,
+              "expected": 735,
+              "predicted": 703,
+              "false_negative": 32,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9564625850340136,
+              "f1": 0.9777468706536857
+            },
+            "line_amount": {
+              "true_positive": 702,
+              "expected": 735,
+              "predicted": 703,
+              "false_negative": 33,
+              "false_positive": 1,
+              "precision": 0.9985775248933144,
+              "recall": 0.9551020408163265,
+              "f1": 0.9763560500695411
+            }
+          },
+          "line_micro": {
+            "true_positive": 4217,
+            "expected": 4410,
+            "predicted": 4218,
+            "false_negative": 193,
+            "false_positive": 1,
+            "precision": 0.9997629208155524,
+            "recall": 0.9562358276643991,
+            "f1": 0.9775150672229949
+          }
+        },
+        "findings": {
+          "true_positive": 24,
+          "expected": 37,
+          "predicted": 95,
+          "false_negative": 13,
+          "false_positive": 71,
+          "precision": 0.25263157894736843,
+          "recall": 0.6486486486486487,
+          "f1": 0.36363636363636365,
+          "clean_negative_documents": 134,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0002",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0004",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0006",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0008",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0010",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0012",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0014",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0016",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0027",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0048",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0054",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0071",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0074",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0093",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0096",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0115",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0118",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0121",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0137",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0140",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0159",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0162",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0001",
+              "kind": "unmapped:missing_currency"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0004",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0017",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0069",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0082",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0095",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0096",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0108",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0173",
+              "kind": "unit_price_mismatch"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "PO-0001",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0003",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0004",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0005",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0006",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0007",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0027",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0010",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0011",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0012",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0013",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0013",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0015",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0015",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0016",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0017",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0018",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0019",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0021",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0071",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0074",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0022",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0023",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0024",
+              "kind": "unmapped:missing_currency"
+            }
+          ],
+          "ambiguous_expected": 4
+        }
+      },
+      "scanned": {
+        "extraction": {
+          "invoices": 56,
+          "predicted_invoices": 0,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 0,
+              "expected": 56,
+              "missing": 56,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "date": {
+              "correct": 0,
+              "expected": 56,
+              "missing": 56,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "currency": {
+              "correct": 0,
+              "expected": 56,
+              "missing": 56,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "invoice_number": {
+              "correct": 0,
+              "expected": 56,
+              "missing": 56,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "total": {
+              "correct": 0,
+              "expected": 56,
+              "missing": 56,
+              "incorrect": 0,
+              "exact_match": 0.0
+            }
+          },
+          "core_micro_exact_match": 0.0,
+          "line_fields": {
+            "sku": {
+              "true_positive": 0,
+              "expected": 363,
+              "predicted": 0,
+              "false_negative": 363,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "description": {
+              "true_positive": 0,
+              "expected": 363,
+              "predicted": 0,
+              "false_negative": 363,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "quantity": {
+              "true_positive": 0,
+              "expected": 363,
+              "predicted": 0,
+              "false_negative": 363,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "unit": {
+              "true_positive": 0,
+              "expected": 363,
+              "predicted": 0,
+              "false_negative": 363,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "unit_price": {
+              "true_positive": 0,
+              "expected": 363,
+              "predicted": 0,
+              "false_negative": 363,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "line_amount": {
+              "true_positive": 0,
+              "expected": 363,
+              "predicted": 0,
+              "false_negative": 363,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "line_micro": {
+            "true_positive": 0,
+            "expected": 2178,
+            "predicted": 0,
+            "false_negative": 2178,
+            "false_positive": 0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "findings": {
+          "true_positive": 0,
+          "expected": 23,
+          "predicted": 0,
+          "false_negative": 23,
+          "false_positive": 0,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "clean_negative_documents": 51,
+          "false_positive_examples": [],
+          "false_negative_examples": [
+            {
+              "id": "INV-0006",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0024",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0031",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0053",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0056",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0059",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0081",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0097",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0100",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0134",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0138",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0141",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0141",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0144",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0147",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0156",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0160",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0163",
+              "kind": "duplicate_invoice"
+            }
+          ],
+          "unknown_predicted_kinds": [],
+          "ambiguous_expected": 0
+        }
+      },
+      "all": {
+        "extraction": {
+          "invoices": 176,
+          "predicted_invoices": 120,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 120,
+              "expected": 176,
+              "missing": 56,
+              "incorrect": 0,
+              "exact_match": 0.6818181818181818
+            },
+            "date": {
+              "correct": 120,
+              "expected": 176,
+              "missing": 56,
+              "incorrect": 0,
+              "exact_match": 0.6818181818181818
+            },
+            "currency": {
+              "correct": 120,
+              "expected": 176,
+              "missing": 56,
+              "incorrect": 0,
+              "exact_match": 0.6818181818181818
+            },
+            "invoice_number": {
+              "correct": 120,
+              "expected": 176,
+              "missing": 56,
+              "incorrect": 0,
+              "exact_match": 0.6818181818181818
+            },
+            "total": {
+              "correct": 115,
+              "expected": 176,
+              "missing": 56,
+              "incorrect": 5,
+              "exact_match": 0.6534090909090909
+            }
+          },
+          "core_micro_exact_match": 0.6761363636363636,
+          "line_fields": {
+            "sku": {
+              "true_positive": 703,
+              "expected": 1098,
+              "predicted": 703,
+              "false_negative": 395,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6402550091074681,
+              "f1": 0.7806774014436424
+            },
+            "description": {
+              "true_positive": 703,
+              "expected": 1098,
+              "predicted": 703,
+              "false_negative": 395,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6402550091074681,
+              "f1": 0.7806774014436424
+            },
+            "quantity": {
+              "true_positive": 703,
+              "expected": 1098,
+              "predicted": 703,
+              "false_negative": 395,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6402550091074681,
+              "f1": 0.7806774014436424
+            },
+            "unit": {
+              "true_positive": 703,
+              "expected": 1098,
+              "predicted": 703,
+              "false_negative": 395,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6402550091074681,
+              "f1": 0.7806774014436424
+            },
+            "unit_price": {
+              "true_positive": 703,
+              "expected": 1098,
+              "predicted": 703,
+              "false_negative": 395,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6402550091074681,
+              "f1": 0.7806774014436424
+            },
+            "line_amount": {
+              "true_positive": 702,
+              "expected": 1098,
+              "predicted": 703,
+              "false_negative": 396,
+              "false_positive": 1,
+              "precision": 0.9985775248933144,
+              "recall": 0.639344262295082,
+              "f1": 0.7795669072737368
+            }
+          },
+          "line_micro": {
+            "true_positive": 4217,
+            "expected": 6588,
+            "predicted": 4218,
+            "false_negative": 2371,
+            "false_positive": 1,
+            "precision": 0.9997629208155524,
+            "recall": 0.6401032179720705,
+            "f1": 0.7804923190819915
+          }
+        },
+        "findings": {
+          "true_positive": 24,
+          "expected": 60,
+          "predicted": 95,
+          "false_negative": 36,
+          "false_positive": 71,
+          "precision": 0.25263157894736843,
+          "recall": 0.4,
+          "f1": 0.3096774193548387,
+          "clean_negative_documents": 185,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0002",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0004",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0006",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0008",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0010",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0012",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0014",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0016",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0027",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0048",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0054",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0071",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0074",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0093",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0096",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0115",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0118",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0121",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0137",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0140",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0159",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0162",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0001",
+              "kind": "unmapped:missing_currency"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0004",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0006",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0017",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0024",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0031",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0053",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0056",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0059",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0069",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0081",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0082",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0095",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0096",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0097",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0100",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0108",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0134",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0138",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0141",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0141",
+              "kind": "quantity_mismatch"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "PO-0001",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0003",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0004",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0005",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0006",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0007",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0027",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0010",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0011",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0012",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0013",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0013",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0015",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0015",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0016",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0017",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0018",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0019",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0021",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0071",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0074",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0022",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0023",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0024",
+              "kind": "unmapped:missing_currency"
+            }
+          ],
+          "ambiguous_expected": 4
+        }
+      }
+    },
+    "held_out": {
+      "native": {
+        "extraction": {
+          "invoices": 30,
+          "predicted_invoices": 30,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 30,
+              "expected": 30,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "date": {
+              "correct": 30,
+              "expected": 30,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "currency": {
+              "correct": 30,
+              "expected": 30,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "invoice_number": {
+              "correct": 15,
+              "expected": 30,
+              "missing": 0,
+              "incorrect": 15,
+              "exact_match": 0.5
+            },
+            "total": {
+              "correct": 25,
+              "expected": 30,
+              "missing": 0,
+              "incorrect": 5,
+              "exact_match": 0.8333333333333334
+            }
+          },
+          "core_micro_exact_match": 0.8666666666666667,
+          "line_fields": {
+            "sku": {
+              "true_positive": 168,
+              "expected": 176,
+              "predicted": 168,
+              "false_negative": 8,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9545454545454546,
+              "f1": 0.9767441860465116
+            },
+            "description": {
+              "true_positive": 168,
+              "expected": 176,
+              "predicted": 168,
+              "false_negative": 8,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9545454545454546,
+              "f1": 0.9767441860465116
+            },
+            "quantity": {
+              "true_positive": 168,
+              "expected": 176,
+              "predicted": 168,
+              "false_negative": 8,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9545454545454546,
+              "f1": 0.9767441860465116
+            },
+            "unit": {
+              "true_positive": 168,
+              "expected": 176,
+              "predicted": 168,
+              "false_negative": 8,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9545454545454546,
+              "f1": 0.9767441860465116
+            },
+            "unit_price": {
+              "true_positive": 168,
+              "expected": 176,
+              "predicted": 168,
+              "false_negative": 8,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9545454545454546,
+              "f1": 0.9767441860465116
+            },
+            "line_amount": {
+              "true_positive": 167,
+              "expected": 176,
+              "predicted": 168,
+              "false_negative": 9,
+              "false_positive": 1,
+              "precision": 0.9940476190476191,
+              "recall": 0.9488636363636364,
+              "f1": 0.9709302325581395
+            }
+          },
+          "line_micro": {
+            "true_positive": 1007,
+            "expected": 1056,
+            "predicted": 1008,
+            "false_negative": 49,
+            "false_positive": 1,
+            "precision": 0.9990079365079365,
+            "recall": 0.9535984848484849,
+            "f1": 0.9757751937984496
+          }
+        },
+        "findings": {
+          "true_positive": 8,
+          "expected": 11,
+          "predicted": 46,
+          "false_negative": 3,
+          "false_positive": 38,
+          "precision": 0.17391304347826086,
+          "recall": 0.7272727272727273,
+          "f1": 0.2807017543859649,
+          "clean_negative_documents": 34,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0018",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "CRN-0018",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0020",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0179",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0180",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0181",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0181",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0183",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0184",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0184",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0186",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0187",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0190",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0192",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0193",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0195",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0197",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0203",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0206",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0209",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0214",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0215",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0217",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0217",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0218",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "PO-0049",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0051",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0052",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0053",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0054",
+              "kind": "unmapped:missing_currency"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0186",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0199",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0212",
+              "kind": "unit_price_mismatch"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "PO-0049",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0051",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0181",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0184",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0052",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0053",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0054",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0055",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0057",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0203",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0206",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0209",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0058",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0058",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0059",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0059",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0060",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0060",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0217",
+              "kind": "unmapped:line_amount_mismatch"
+            }
+          ],
+          "ambiguous_expected": 0
+        }
+      },
+      "scanned": {
+        "extraction": {
+          "invoices": 14,
+          "predicted_invoices": 0,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 0,
+              "expected": 14,
+              "missing": 14,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "date": {
+              "correct": 0,
+              "expected": 14,
+              "missing": 14,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "currency": {
+              "correct": 0,
+              "expected": 14,
+              "missing": 14,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "invoice_number": {
+              "correct": 0,
+              "expected": 14,
+              "missing": 14,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "total": {
+              "correct": 0,
+              "expected": 14,
+              "missing": 14,
+              "incorrect": 0,
+              "exact_match": 0.0
+            }
+          },
+          "core_micro_exact_match": 0.0,
+          "line_fields": {
+            "sku": {
+              "true_positive": 0,
+              "expected": 93,
+              "predicted": 0,
+              "false_negative": 93,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "description": {
+              "true_positive": 0,
+              "expected": 93,
+              "predicted": 0,
+              "false_negative": 93,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "quantity": {
+              "true_positive": 0,
+              "expected": 93,
+              "predicted": 0,
+              "false_negative": 93,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "unit": {
+              "true_positive": 0,
+              "expected": 93,
+              "predicted": 0,
+              "false_negative": 93,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "unit_price": {
+              "true_positive": 0,
+              "expected": 93,
+              "predicted": 0,
+              "false_negative": 93,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "line_amount": {
+              "true_positive": 0,
+              "expected": 93,
+              "predicted": 0,
+              "false_negative": 93,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "line_micro": {
+            "true_positive": 0,
+            "expected": 558,
+            "predicted": 0,
+            "false_negative": 558,
+            "false_positive": 0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "findings": {
+          "true_positive": 0,
+          "expected": 4,
+          "predicted": 0,
+          "false_negative": 4,
+          "false_positive": 0,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "clean_negative_documents": 14,
+          "false_positive_examples": [],
+          "false_negative_examples": [
+            {
+              "id": "INV-0178",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0185",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0216",
+              "kind": "quantity_mismatch"
+            }
+          ],
+          "unknown_predicted_kinds": [],
+          "ambiguous_expected": 0
+        }
+      },
+      "all": {
+        "extraction": {
+          "invoices": 44,
+          "predicted_invoices": 30,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 30,
+              "expected": 44,
+              "missing": 14,
+              "incorrect": 0,
+              "exact_match": 0.6818181818181818
+            },
+            "date": {
+              "correct": 30,
+              "expected": 44,
+              "missing": 14,
+              "incorrect": 0,
+              "exact_match": 0.6818181818181818
+            },
+            "currency": {
+              "correct": 30,
+              "expected": 44,
+              "missing": 14,
+              "incorrect": 0,
+              "exact_match": 0.6818181818181818
+            },
+            "invoice_number": {
+              "correct": 15,
+              "expected": 44,
+              "missing": 14,
+              "incorrect": 15,
+              "exact_match": 0.3409090909090909
+            },
+            "total": {
+              "correct": 25,
+              "expected": 44,
+              "missing": 14,
+              "incorrect": 5,
+              "exact_match": 0.5681818181818182
+            }
+          },
+          "core_micro_exact_match": 0.5909090909090909,
+          "line_fields": {
+            "sku": {
+              "true_positive": 168,
+              "expected": 269,
+              "predicted": 168,
+              "false_negative": 101,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6245353159851301,
+              "f1": 0.7688787185354691
+            },
+            "description": {
+              "true_positive": 168,
+              "expected": 269,
+              "predicted": 168,
+              "false_negative": 101,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6245353159851301,
+              "f1": 0.7688787185354691
+            },
+            "quantity": {
+              "true_positive": 168,
+              "expected": 269,
+              "predicted": 168,
+              "false_negative": 101,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6245353159851301,
+              "f1": 0.7688787185354691
+            },
+            "unit": {
+              "true_positive": 168,
+              "expected": 269,
+              "predicted": 168,
+              "false_negative": 101,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6245353159851301,
+              "f1": 0.7688787185354691
+            },
+            "unit_price": {
+              "true_positive": 168,
+              "expected": 269,
+              "predicted": 168,
+              "false_negative": 101,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6245353159851301,
+              "f1": 0.7688787185354691
+            },
+            "line_amount": {
+              "true_positive": 167,
+              "expected": 269,
+              "predicted": 168,
+              "false_negative": 102,
+              "false_positive": 1,
+              "precision": 0.9940476190476191,
+              "recall": 0.620817843866171,
+              "f1": 0.7643020594965675
+            }
+          },
+          "line_micro": {
+            "true_positive": 1007,
+            "expected": 1614,
+            "predicted": 1008,
+            "false_negative": 607,
+            "false_positive": 1,
+            "precision": 0.9990079365079365,
+            "recall": 0.6239157372986369,
+            "f1": 0.7681159420289855
+          }
+        },
+        "findings": {
+          "true_positive": 8,
+          "expected": 15,
+          "predicted": 46,
+          "false_negative": 7,
+          "false_positive": 38,
+          "precision": 0.17391304347826086,
+          "recall": 0.5333333333333333,
+          "f1": 0.26229508196721313,
+          "clean_negative_documents": 48,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0018",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "CRN-0018",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0020",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0179",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0180",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0181",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0181",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0183",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0184",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0184",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0186",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0187",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0190",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0192",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0193",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0195",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0197",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0203",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0206",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0209",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0214",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0215",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0217",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0217",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0218",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "PO-0049",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0051",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0052",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0053",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0054",
+              "kind": "unmapped:missing_currency"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0178",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0185",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0186",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0199",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0212",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0216",
+              "kind": "quantity_mismatch"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "PO-0049",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0051",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0181",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0184",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0052",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0053",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0054",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0055",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0057",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0203",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0206",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0209",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0058",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0058",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0059",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0059",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0060",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0060",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0217",
+              "kind": "unmapped:line_amount_mismatch"
+            }
+          ],
+          "ambiguous_expected": 0
+        }
+      }
+    },
+    "all": {
+      "native": {
+        "extraction": {
+          "invoices": 150,
+          "predicted_invoices": 150,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 150,
+              "expected": 150,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "date": {
+              "correct": 150,
+              "expected": 150,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "currency": {
+              "correct": 150,
+              "expected": 150,
+              "missing": 0,
+              "incorrect": 0,
+              "exact_match": 1.0
+            },
+            "invoice_number": {
+              "correct": 135,
+              "expected": 150,
+              "missing": 0,
+              "incorrect": 15,
+              "exact_match": 0.9
+            },
+            "total": {
+              "correct": 140,
+              "expected": 150,
+              "missing": 0,
+              "incorrect": 10,
+              "exact_match": 0.9333333333333333
+            }
+          },
+          "core_micro_exact_match": 0.9666666666666667,
+          "line_fields": {
+            "sku": {
+              "true_positive": 871,
+              "expected": 911,
+              "predicted": 871,
+              "false_negative": 40,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9560922063666301,
+              "f1": 0.9775533108866442
+            },
+            "description": {
+              "true_positive": 871,
+              "expected": 911,
+              "predicted": 871,
+              "false_negative": 40,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9560922063666301,
+              "f1": 0.9775533108866442
+            },
+            "quantity": {
+              "true_positive": 871,
+              "expected": 911,
+              "predicted": 871,
+              "false_negative": 40,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9560922063666301,
+              "f1": 0.9775533108866442
+            },
+            "unit": {
+              "true_positive": 871,
+              "expected": 911,
+              "predicted": 871,
+              "false_negative": 40,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9560922063666301,
+              "f1": 0.9775533108866442
+            },
+            "unit_price": {
+              "true_positive": 871,
+              "expected": 911,
+              "predicted": 871,
+              "false_negative": 40,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.9560922063666301,
+              "f1": 0.9775533108866442
+            },
+            "line_amount": {
+              "true_positive": 869,
+              "expected": 911,
+              "predicted": 871,
+              "false_negative": 42,
+              "false_positive": 2,
+              "precision": 0.9977037887485649,
+              "recall": 0.9538968166849616,
+              "f1": 0.9753086419753086
+            }
+          },
+          "line_micro": {
+            "true_positive": 5224,
+            "expected": 5466,
+            "predicted": 5226,
+            "false_negative": 242,
+            "false_positive": 2,
+            "precision": 0.9996172981247609,
+            "recall": 0.955726308086352,
+            "f1": 0.9771791994014216
+          }
+        },
+        "findings": {
+          "true_positive": 32,
+          "expected": 48,
+          "predicted": 141,
+          "false_negative": 16,
+          "false_positive": 109,
+          "precision": 0.22695035460992907,
+          "recall": 0.6666666666666666,
+          "f1": 0.3386243386243386,
+          "clean_negative_documents": 168,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0002",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0004",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0006",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0008",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0010",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0012",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0014",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0016",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0018",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "CRN-0018",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0020",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0027",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0048",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0054",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0071",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0074",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0093",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0096",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0115",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0118",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0121",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0137",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0140",
+              "kind": "unmapped:ambiguous_po"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0004",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0017",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0069",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0082",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0095",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0096",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0108",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0173",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0186",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0199",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0212",
+              "kind": "unit_price_mismatch"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "PO-0001",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0003",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0004",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0005",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0006",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0007",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0027",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0010",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0011",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0012",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0013",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0013",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0015",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0015",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0016",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0017",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0018",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0019",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0021",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0071",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0074",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0022",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0023",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0024",
+              "kind": "unmapped:missing_currency"
+            }
+          ],
+          "ambiguous_expected": 4
+        }
+      },
+      "scanned": {
+        "extraction": {
+          "invoices": 70,
+          "predicted_invoices": 0,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 0,
+              "expected": 70,
+              "missing": 70,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "date": {
+              "correct": 0,
+              "expected": 70,
+              "missing": 70,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "currency": {
+              "correct": 0,
+              "expected": 70,
+              "missing": 70,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "invoice_number": {
+              "correct": 0,
+              "expected": 70,
+              "missing": 70,
+              "incorrect": 0,
+              "exact_match": 0.0
+            },
+            "total": {
+              "correct": 0,
+              "expected": 70,
+              "missing": 70,
+              "incorrect": 0,
+              "exact_match": 0.0
+            }
+          },
+          "core_micro_exact_match": 0.0,
+          "line_fields": {
+            "sku": {
+              "true_positive": 0,
+              "expected": 456,
+              "predicted": 0,
+              "false_negative": 456,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "description": {
+              "true_positive": 0,
+              "expected": 456,
+              "predicted": 0,
+              "false_negative": 456,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "quantity": {
+              "true_positive": 0,
+              "expected": 456,
+              "predicted": 0,
+              "false_negative": 456,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "unit": {
+              "true_positive": 0,
+              "expected": 456,
+              "predicted": 0,
+              "false_negative": 456,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "unit_price": {
+              "true_positive": 0,
+              "expected": 456,
+              "predicted": 0,
+              "false_negative": 456,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "line_amount": {
+              "true_positive": 0,
+              "expected": 456,
+              "predicted": 0,
+              "false_negative": 456,
+              "false_positive": 0,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "line_micro": {
+            "true_positive": 0,
+            "expected": 2736,
+            "predicted": 0,
+            "false_negative": 2736,
+            "false_positive": 0,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "findings": {
+          "true_positive": 0,
+          "expected": 27,
+          "predicted": 0,
+          "false_negative": 27,
+          "false_positive": 0,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "clean_negative_documents": 65,
+          "false_positive_examples": [],
+          "false_negative_examples": [
+            {
+              "id": "INV-0006",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0024",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0031",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0053",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0056",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0059",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0081",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0097",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0100",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0134",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0138",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0141",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0141",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0144",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0147",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0156",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0160",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0163",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0178",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0185",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0207",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0216",
+              "kind": "quantity_mismatch"
+            }
+          ],
+          "unknown_predicted_kinds": [],
+          "ambiguous_expected": 0
+        }
+      },
+      "all": {
+        "extraction": {
+          "invoices": 220,
+          "predicted_invoices": 150,
+          "core_fields": {
+            "vendor_name": {
+              "correct": 150,
+              "expected": 220,
+              "missing": 70,
+              "incorrect": 0,
+              "exact_match": 0.6818181818181818
+            },
+            "date": {
+              "correct": 150,
+              "expected": 220,
+              "missing": 70,
+              "incorrect": 0,
+              "exact_match": 0.6818181818181818
+            },
+            "currency": {
+              "correct": 150,
+              "expected": 220,
+              "missing": 70,
+              "incorrect": 0,
+              "exact_match": 0.6818181818181818
+            },
+            "invoice_number": {
+              "correct": 135,
+              "expected": 220,
+              "missing": 70,
+              "incorrect": 15,
+              "exact_match": 0.6136363636363636
+            },
+            "total": {
+              "correct": 140,
+              "expected": 220,
+              "missing": 70,
+              "incorrect": 10,
+              "exact_match": 0.6363636363636364
+            }
+          },
+          "core_micro_exact_match": 0.6590909090909091,
+          "line_fields": {
+            "sku": {
+              "true_positive": 871,
+              "expected": 1367,
+              "predicted": 871,
+              "false_negative": 496,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6371616678858815,
+              "f1": 0.7783735478105451
+            },
+            "description": {
+              "true_positive": 871,
+              "expected": 1367,
+              "predicted": 871,
+              "false_negative": 496,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6371616678858815,
+              "f1": 0.7783735478105451
+            },
+            "quantity": {
+              "true_positive": 871,
+              "expected": 1367,
+              "predicted": 871,
+              "false_negative": 496,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6371616678858815,
+              "f1": 0.7783735478105451
+            },
+            "unit": {
+              "true_positive": 871,
+              "expected": 1367,
+              "predicted": 871,
+              "false_negative": 496,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6371616678858815,
+              "f1": 0.7783735478105451
+            },
+            "unit_price": {
+              "true_positive": 871,
+              "expected": 1367,
+              "predicted": 871,
+              "false_negative": 496,
+              "false_positive": 0,
+              "precision": 1.0,
+              "recall": 0.6371616678858815,
+              "f1": 0.7783735478105451
+            },
+            "line_amount": {
+              "true_positive": 869,
+              "expected": 1367,
+              "predicted": 871,
+              "false_negative": 498,
+              "false_positive": 2,
+              "precision": 0.9977037887485649,
+              "recall": 0.6356986100950988,
+              "f1": 0.7765862377122431
+            }
+          },
+          "line_micro": {
+            "true_positive": 5224,
+            "expected": 8202,
+            "predicted": 5226,
+            "false_negative": 2978,
+            "false_positive": 2,
+            "precision": 0.9996172981247609,
+            "recall": 0.636917824920751,
+            "f1": 0.7780756627941614
+          }
+        },
+        "findings": {
+          "true_positive": 32,
+          "expected": 75,
+          "predicted": 141,
+          "false_negative": 43,
+          "false_positive": 109,
+          "precision": 0.22695035460992907,
+          "recall": 0.4266666666666667,
+          "f1": 0.2962962962962963,
+          "clean_negative_documents": 233,
+          "false_positive_examples": [
+            {
+              "id": "CRN-0002",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0004",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0006",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0008",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0010",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0012",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0014",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0016",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0018",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "CRN-0018",
+              "kind": "po_missing"
+            },
+            {
+              "id": "CRN-0020",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0027",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0048",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0051",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0054",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0071",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0074",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0093",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0096",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0115",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0118",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0121",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0137",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0140",
+              "kind": "unmapped:ambiguous_po"
+            }
+          ],
+          "false_negative_examples": [
+            {
+              "id": "INV-0004",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0006",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0009",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0010",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0017",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0021",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0024",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0031",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0053",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0056",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0059",
+              "kind": "total_inconsistent"
+            },
+            {
+              "id": "INV-0062",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0069",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0075",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0081",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0082",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0095",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0096",
+              "kind": "quantity_mismatch"
+            },
+            {
+              "id": "INV-0097",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0100",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0108",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0119",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0120",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0131",
+              "kind": "ambiguous_vendor_match"
+            },
+            {
+              "id": "INV-0134",
+              "kind": "unit_price_mismatch"
+            },
+            {
+              "id": "INV-0138",
+              "kind": "po_missing"
+            },
+            {
+              "id": "INV-0141",
+              "kind": "duplicate_invoice"
+            },
+            {
+              "id": "INV-0141",
+              "kind": "quantity_mismatch"
+            }
+          ],
+          "unknown_predicted_kinds": [
+            {
+              "id": "PO-0001",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0003",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0008",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0004",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0005",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0006",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0007",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0009",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0027",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0030",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0010",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0011",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0012",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0013",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0013",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0015",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "PO-0015",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:line_amount_mismatch"
+            },
+            {
+              "id": "INV-0049",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0052",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0016",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0017",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0018",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0019",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0021",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "INV-0071",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "INV-0074",
+              "kind": "unmapped:ambiguous_po"
+            },
+            {
+              "id": "PO-0022",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0023",
+              "kind": "unmapped:missing_currency"
+            },
+            {
+              "id": "PO-0024",
+              "kind": "unmapped:missing_currency"
+            }
+          ],
+          "ambiguous_expected": 4
+        }
+      }
+    }
+  },
+  "target_check": {
+    "held_out_core_exact_match": false,
+    "held_out_line_f1": false,
+    "finding_precision": false,
+    "finding_recall": false
+  }
+}

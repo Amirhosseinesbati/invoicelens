@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "dataset": "Synthetic evaluator fixture",
+  "seed": 1,
+  "reference_date": "2026-09-27",
+  "documents": [
+    {
+      "id": "FIX-INV-1",
+      "type": "invoice",
+      "split": "held_out",
+      "layout_id": 9,
+      "render": {"scanned": false},
+      "source": {
+        "printed_vendor_name": "Alpha Fixtures",
+        "number": "A-001",
+        "date": "2026-09-01",
+        "currency": "USD",
+        "total": "20.00",
+        "lines": [
+          {"sku": "SKU-A", "description": "Valve", "quantity": "1", "unit": "ea", "unit_price": "10.00", "line_amount": "10.00"},
+          {"sku": "SKU-B", "description": "Bolt", "quantity": "2", "unit": "ea", "unit_price": "5.00", "line_amount": "10.00"}
+        ]
+      },
+      "expected_findings": [{"kind": "unit_price_mismatch"}]
+    },
+    {
+      "id": "FIX-INV-2",
+      "type": "invoice",
+      "split": "held_out",
+      "layout_id": 10,
+      "render": {"scanned": true},
+      "source": {
+        "printed_vendor_name": "Beta Fixtures",
+        "number": "B-001",
+        "date": "2026-09-02",
+        "currency": "EUR",
+        "total": "8.00",
+        "lines": [
+          {"sku": "SKU-C", "description": "Seal", "quantity": "1", "unit": "ea", "unit_price": "8.00", "line_amount": "8.00"}
+        ]
+      },
+      "expected_findings": []
+    }
+  ]
+}

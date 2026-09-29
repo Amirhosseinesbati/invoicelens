@@ -1,0 +1,122 @@
+import { useEffect, useMemo, useState } from 'react'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { ArrowUpRight, BriefcaseBusiness, ChevronDown, FileClock, FileStack, Inbox, LayoutGrid, LogOut, Menu, ScanLine, Search, Settings2, UploadCloud, Wifi, WifiOff } from 'lucide-react'
+import { ApiError, api } from './api/client'
+import type { User } from './api/types'
+import { LoginPage } from './features/auth/LoginPage'
+import { OverviewPage } from './features/overview/OverviewPage'
+import { QueuePage } from './features/queue/QueuePage'
+import { IntakePage } from './features/intake/IntakePage'
+import { ReviewPage } from './features/review/ReviewPage'
+import { VendorsPage } from './features/vendors/VendorsPage'
+import { ExportsPage } from './features/exports/ExportsPage'
+import { SettingsPage } from './features/settings/SettingsPage'
+import { LoadingState, StatusPill } from './components/States'
+
+type Route = { view: 'overview' | 'queue' | 'intake' | 'vendors' | 'exports' | 'settings' } | { view: 'document'; id: string }
+
+function parseRoute(): Route {
+  const hash = window.location.hash.slice(1).split('?')[0]
+  if (hash.startsWith('/document/')) return { view: 'document', id: decodeURIComponent(hash.slice('/document/'.length)) }
+  if (['queue', 'intake', 'vendors', 'exports', 'settings'].includes(hash.slice(1))) return { view: hash.slice(1) as 'queue' | 'intake' | 'vendors' | 'exports' | 'settings' }
+  return { view: 'overview' }
+}
+
+export function navigate(view: Route['view'] | string, id?: string): void {
+  window.location.hash = view === 'document' && id ? `/document/${encodeURIComponent(id)}` : `/${view}`
+}
+
+const navigation = [
+  { id: 'overview', label: 'Overview', icon: LayoutGrid },
+  { id: 'queue', label: 'Review queue', icon: Inbox },
+  { id: 'intake', label: 'Batch intake', icon: UploadCloud },
+  { id: 'vendors', label: 'Vendors', icon: BriefcaseBusiness },
+  { id: 'exports', label: 'Exports', icon: FileStack },
+  { id: 'settings', label: 'Settings', icon: Settings2 },
+] as const
+
+function Workbench({ user, onLogout }: { user: User; onLogout: () => void }) {
+  const [route, setRoute] = useState<Route>(parseRoute)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [search, setSearch] = useState('')
+  const queryClient = useQueryClient()
+  const overview = useQuery({ queryKey: ['overview'], queryFn: api.overview, refetchInterval: 15_000 })
+  const settings = useQuery({ queryKey: ['settings'], queryFn: api.settings, retry: false, refetchInterval: 30_000 })
+  useEffect(() => {
+    const update = () => { setRoute(parseRoute()); setMobileOpen(false); window.scrollTo({ top: 0, behavior: 'instant' }) }
+    window.addEventListener('hashchange', update)
+    return () => window.removeEventListener('hashchange', update)
+  }, [])
+  const active = route.view === 'document' ? 'queue' : route.view
+  const title = route.view === 'document' ? 'Document review' : navigation.find((item) => item.id === route.view)?.label ?? 'Overview'
+  const connected = overview.isSuccess && settings.isSuccess
+  const checkingConnection = overview.isPending || settings.isPending
+  const readOnly = user.role === 'viewer'
+  const page = useMemo(() => {
+    switch (route.view) {
+      case 'overview': return <OverviewPage onOpenDocument={(id) => navigate('document', id)} onNavigate={navigate} />
+      case 'queue': return <QueuePage search={search} onOpenDocument={(id) => navigate('document', id)} />
+      case 'intake': return <IntakePage readOnly={readOnly} onOpenDocument={(id) => navigate('document', id)} />
+      case 'vendors': return <VendorsPage onOpenDocument={(id) => navigate('document', id)} />
+      case 'exports': return <ExportsPage readOnly={readOnly} onOpenDocument={(id) => navigate('document', id)} />
+      case 'settings': return <SettingsPage user={user} />
+      case 'document': return <ReviewPage id={route.id} readOnly={readOnly} onBack={() => navigate('queue')} />
+    }
+  }, [route, search, readOnly, user])
+  return <div className="app-shell">
+    <aside className={`sidebar ${mobileOpen ? 'sidebar-open' : ''}`}>
+      <div className="brand"><span className="brand-mark"><ScanLine size={21} strokeWidth={2.2} /></span><span>Invoice<span className="brand-strong">Lens</span></span></div>
+      <div className="workspace-switch"><span className="workspace-avatar">HI</span><span><strong>{user.workspace_name || 'Harbor Industrial'}</strong><small>Operations workspace</small></span><ChevronDown size={14} /></div>
+      <div className="sidebar-caption">WORKSPACE</div>
+      <nav aria-label="Primary navigation" className="primary-nav">
+        {navigation.map(({ id, label, icon: Icon }) => <button key={id} type="button" className={`nav-link ${active === id ? 'nav-active' : ''}`} onClick={() => navigate(id)}><Icon size={18} strokeWidth={1.9} /><span>{label}</span>{id === 'queue' && overview.data && overview.data.needs_review > 0 && <b>{overview.data.needs_review}</b>}</button>)}
+      </nav>
+      <div className="sidebar-bottom">
+        <div className="demo-note"><span className="demo-note-line" /> SYNTHETIC DEMO DATASET <p>All documents and vendors in this workspace are fictional.</p></div>
+        <div className="user-tile"><span className="user-avatar">{user.email.slice(0, 2).toUpperCase()}</span><span className="user-meta"><strong>{user.email}</strong><small>{user.role} access</small></span><button className="icon-button" aria-label="Sign out" title="Sign out" onClick={onLogout}><LogOut size={17} /></button></div>
+      </div>
+    </aside>
+    {mobileOpen && <button className="mobile-scrim" aria-label="Close menu" onClick={() => setMobileOpen(false)} />}
+    <div className="main-column">
+      <header className="topbar">
+        <div className="topbar-left"><button className="icon-button mobile-menu" aria-label="Open menu" onClick={() => setMobileOpen(true)}><Menu size={20} /></button><span className="topbar-breadcrumb">Workspace</span><span className="breadcrumb-slash">/</span><strong>{title}</strong></div>
+        <div className="topbar-actions">
+          <form className="top-search" onSubmit={(event) => { event.preventDefault(); navigate('queue') }}><Search size={17} /><input aria-label="Search documents" placeholder="Search documents…" value={search} onChange={(event) => setSearch(event.target.value)} /><kbd>/</kbd></form>
+          <StatusPill tone={checkingConnection ? 'blue' : connected ? 'green' : 'red'}>{checkingConnection ? 'Checking connection' : connected ? <><Wifi size={13} /> Connected</> : <><WifiOff size={13} /> Disconnected</>}</StatusPill>
+          <button className="top-avatar" title={user.email} onClick={() => navigate('settings')}>{user.email.slice(0, 2).toUpperCase()}</button>
+        </div>
+      </header>
+      {settings.data?.mode.toUpperCase() === 'DEMO' && <div className="demo-banner"><span>DEMO MODE</span> This workspace contains synthetic documents and simulated model responses. <ArrowUpRight size={14} /></div>}
+      {page}
+      <footer className="app-footer"><span>InvoiceLens / Harbor Industrial</span><span><FileClock size={13} /> Evidence-first document operations</span></footer>
+    </div>
+    <button className="sr-only focus-visible-control" onClick={() => { queryClient.invalidateQueries() }}>Refresh all data</button>
+  </div>
+}
+
+export function App() {
+  const queryClient = useQueryClient()
+  const [sessionUser, setSessionUser] = useState<User | null>(null)
+  const me = useQuery({ queryKey: ['auth', 'me'], queryFn: api.me, retry: false, enabled: !sessionUser })
+  const user = sessionUser ?? me.data
+  const onLogout = async () => {
+    try { await api.logout() } catch { /* Local token still cleared below. */ }
+    setSessionUser(null)
+    queryClient.clear()
+    window.location.hash = '/overview'
+    await queryClient.invalidateQueries({ queryKey: ['auth', 'me'] })
+  }
+  useEffect(() => {
+    const searchShortcut = (event: KeyboardEvent) => {
+      if (event.key === '/' && !(event.target instanceof HTMLInputElement) && !(event.target instanceof HTMLTextAreaElement)) {
+        event.preventDefault(); document.querySelector<HTMLInputElement>('.top-search input')?.focus()
+      }
+    }
+    document.addEventListener('keydown', searchShortcut)
+    return () => document.removeEventListener('keydown', searchShortcut)
+  }, [])
+  if (!user && me.isPending) return <div className="boot-screen"><div className="brand"><span className="brand-mark"><ScanLine size={22} /></span>Invoice<strong>Lens</strong></div><LoadingState label="Connecting to your workspace…" /></div>
+  if (!user && me.isError && (!(me.error instanceof ApiError) || me.error.status !== 401)) return <div className="boot-screen"><div className="brand"><span className="brand-mark"><ScanLine size={22} /></span>Invoice<strong>Lens</strong></div><div className="boot-error"><WifiOff size={24} /><h1>Unable to reach InvoiceLens</h1><p>{me.error instanceof Error ? me.error.message : 'The API is unavailable.'}</p><button className="button button-primary" onClick={() => me.refetch()}>Retry connection</button></div></div>
+  if (!user) return <LoginPage onLogin={(loggedInUser) => { setSessionUser(loggedInUser); queryClient.setQueryData(['auth', 'me'], loggedInUser); queryClient.invalidateQueries() }} />
+  return <Workbench user={user} onLogout={onLogout} />
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "id": "FIX-INV-1",
+      "fields": {
+        "vendor_name": "Alpha Fixtures",
+        "invoice_number": "A-001",
+        "date": "2026-09-01",
+        "currency": "USD",
+        "total": "21.00"
+      },
+      "lines": [
+        {"sku": "SKU-A", "description": "Valve", "quantity": "1", "unit": "ea", "unit_price": "10.00", "line_amount": "10.00"},
+        {"sku": "SKU-B", "description": "Bolt", "quantity": "3", "unit": "ea", "unit_price": "5.00", "line_amount": "10.00"}
+      ],
+      "findings": ["unit_price_mismatch", "duplicate_invoice"]
+    }
+  ]
+}

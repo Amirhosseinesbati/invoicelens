@@ -1,0 +1,14 @@
+node_modules
+dist
+.vite
+.vite-temp
+tmp
+qa-temp
+scripts/qa-local.cjs
+.git
+.cache
+coverage
+test-results
+.playwright
+.env*
+*.log

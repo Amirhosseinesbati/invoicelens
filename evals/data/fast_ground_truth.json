@@ -1,0 +1,889 @@
+{
+  "schema_version": "1.0",
+  "dataset": "Synthetic demo dataset",
+  "seed": 20260927,
+  "reference_date": "2026-09-27",
+  "preset": "fast",
+  "documents": [
+    {
+      "id": "PO-0001",
+      "workspace": "harbor-demo-a",
+      "vendor_id": "V-001",
+      "type": "purchase_order",
+      "layout_id": 1,
+      "split": "development",
+      "locale": "us",
+      "source": {
+        "vendor": {
+          "id": "V-001",
+          "name": "North Quay Fasteners",
+          "address": "110 Dockside Avenue, Port Alder, PA 19010",
+          "email": "billing01@example.test",
+          "tax_id": "FICTIONAL-TAX-0001"
+        },
+        "printed_vendor_name": "North Quay Fasteners",
+        "number": "HI-PO-00001",
+        "date": "2026-05-20",
+        "due_date": "2026-07-04",
+        "currency": "USD",
+        "po_number": null,
+        "lines": [
+          {
+            "sku": "BELT-500",
+            "description": "Conveyor belt section, 500 mm width",
+            "quantity": "70",
+            "unit": "m",
+            "unit_price": "35.77",
+            "line_amount": "2503.90"
+          },
+          {
+            "sku": "DRV-MINI",
+            "description": "Compact variable-speed motor drive",
+            "quantity": "37",
+            "unit": "ea",
+            "unit_price": "244.02",
+            "line_amount": "9028.74"
+          },
+          {
+            "sku": "REG-4B",
+            "description": "Four-port air pressure regulator",
+            "quantity": "63",
+            "unit": "ea",
+            "unit_price": "87.17",
+            "line_amount": "5491.71"
+          },
+          {
+            "sku": "BLT-M12",
+            "description": "M12 zinc flange bolt, carton of 100",
+            "quantity": "33",
+            "unit": "box",
+            "unit_price": "24.40",
+            "line_amount": "805.20"
+          },
+          {
+            "sku": "HSE-10M",
+            "description": "Reinforced hydraulic hose, 10 m coil",
+            "quantity": "47",
+            "unit": "roll",
+            "unit_price": "90.94",
+            "line_amount": "4274.18"
+          },
+          {
+            "sku": "VLV-214",
+            "description": "Two-way stainless isolation valve",
+            "quantity": "83",
+            "unit": "ea",
+            "unit_price": "72.77",
+            "line_amount": "6039.91"
+          },
+          {
+            "sku": "SWX-24",
+            "description": "24 V maintained-contact selector switch",
+            "quantity": "61",
+            "unit": "ea",
+            "unit_price": "43.22",
+            "line_amount": "2636.42"
+          },
+          {
+            "sku": "FLT-20U",
+            "description": "Inline particulate filter, 20 micron",
+            "quantity": "56",
+            "unit": "ea",
+            "unit_price": "57.13",
+            "line_amount": "3199.28"
+          }
+        ],
+        "subtotal": "33979.34",
+        "tax_rate": "0",
+        "tax": "0.00",
+        "freight": "0.00",
+        "discount": "0.00",
+        "total": "33979.34",
+        "computed_total": "33979.34"
+      },
+      "expected_findings": [],
+      "render": {
+        "path": "documents/PO-0001.pdf",
+        "medium": "pdf",
+        "scanned": false,
+        "page_count": 1
+      },
+      "overlapping_case": false
+    },
+    {
+      "id": "INV-0004",
+      "workspace": "harbor-demo-a",
+      "vendor_id": "V-001",
+      "type": "invoice",
+      "layout_id": 1,
+      "split": "development",
+      "locale": "us",
+      "source": {
+        "vendor": {
+          "id": "V-001",
+          "name": "North Quay Fasteners",
+          "address": "110 Dockside Avenue, Port Alder, PA 19010",
+          "email": "billing01@example.test",
+          "tax_id": "FICTIONAL-TAX-0001"
+        },
+        "printed_vendor_name": "North Quay Fasteners",
+        "number": "001-26-0004",
+        "date": "2026-06-16",
+        "due_date": "2026-07-16",
+        "currency": "USD",
+        "po_number": "HI-PO-00001",
+        "lines": [
+          {
+            "sku": "DRV-MINI",
+            "description": "Compact variable-speed motor drive",
+            "quantity": "8",
+            "unit": "ea",
+            "unit_price": "287.94",
+            "line_amount": "2303.52"
+          },
+          {
+            "sku": "VLV-214",
+            "description": "Two-way stainless isolation valve",
+            "quantity": "7",
+            "unit": "ea",
+            "unit_price": "72.77",
+            "line_amount": "509.39"
+          },
+          {
+            "sku": "SWX-24",
+            "description": "24 V maintained-contact selector switch",
+            "quantity": "6",
+            "unit": "ea",
+            "unit_price": "43.22",
+            "line_amount": "259.32"
+          },
+          {
+            "sku": "BLT-M12",
+            "description": "M12 zinc flange bolt, carton of 100",
+            "quantity": "7",
+            "unit": "box",
+            "unit_price": "24.40",
+            "line_amount": "170.80"
+          }
+        ],
+        "subtotal": "3243.03",
+        "tax_rate": "0.19",
+        "tax": "613.33",
+        "freight": "12.00",
+        "discount": "15.00",
+        "total": "3853.36",
+        "computed_total": "3853.36"
+      },
+      "expected_findings": [
+        {
+          "kind": "unit_price_mismatch",
+          "line_index": 0,
+          "po_number": "HI-PO-00001"
+        }
+      ],
+      "lookalike_legitimate": false,
+      "render": {
+        "path": "documents/INV-0004.pdf",
+        "medium": "pdf",
+        "scanned": false,
+        "page_count": 1
+      },
+      "overlapping_case": false
+    },
+    {
+      "id": "PO-0004",
+      "workspace": "harbor-demo-a",
+      "vendor_id": "V-002",
+      "type": "purchase_order",
+      "layout_id": 2,
+      "split": "development",
+      "locale": "eu",
+      "source": {
+        "vendor": {
+          "id": "V-002",
+          "name": "North Quay Fabrication",
+          "address": "127 Dockside Avenue, Port Alder, PA 19011",
+          "email": "billing02@example.test",
+          "tax_id": "FICTIONAL-TAX-0002"
+        },
+        "printed_vendor_name": "North Quay Fabrication",
+        "number": "HI-PO-00004",
+        "date": "2026-05-21",
+        "due_date": "2026-07-05",
+        "currency": "EUR",
+        "po_number": null,
+        "lines": [
+          {
+            "sku": "BLT-M12",
+            "description": "M12 zinc flange bolt, carton of 100",
+            "quantity": "81",
+            "unit": "box",
+            "unit_price": "24.65",
+            "line_amount": "1996.65"
+          },
+          {
+            "sku": "CPL-SS8",
+            "description": "Stainless coupling, 8 mm, precision bore",
+            "quantity": "81",
+            "unit": "ea",
+            "unit_price": "12.03",
+            "line_amount": "974.43"
+          },
+          {
+            "sku": "CAB-25",
+            "description": "Shielded control cable, 25 m reel",
+            "quantity": "56",
+            "unit": "roll",
+            "unit_price": "68.71",
+            "line_amount": "3847.76"
+          },
+          {
+            "sku": "GSK-EPDM",
+            "description": "EPDM flange gasket, DN50, packet",
+            "quantity": "44",
+            "unit": "box",
+            "unit_price": "31.28",
+            "line_amount": "1376.32"
+          },
+          {
+            "sku": "NUT-M16",
+            "description": "M16 stainless lock nut, bag of 50",
+            "quantity": "90",
+            "unit": "box",
+            "unit_price": "22.47",
+            "line_amount": "2022.30"
+          },
+          {
+            "sku": "OIL-32",
+            "description": "ISO VG 32 hydraulic oil, 5 L can",
+            "quantity": "70",
+            "unit": "ea",
+            "unit_price": "40.94",
+            "line_amount": "2865.80"
+          },
+          {
+            "sku": "LMP-LED",
+            "description": "Industrial LED stack light, amber",
+            "quantity": "63",
+            "unit": "ea",
+            "unit_price": "57.32",
+            "line_amount": "3611.16"
+          },
+          {
+            "sku": "PMP-SEAL",
+            "description": "Pump mechanical seal service kit",
+            "quantity": "37",
+            "unit": "kit",
+            "unit_price": "132.86",
+            "line_amount": "4915.82"
+          }
+        ],
+        "subtotal": "21610.24",
+        "tax_rate": "0",
+        "tax": "0.00",
+        "freight": "0.00",
+        "discount": "0.00",
+        "total": "21610.24",
+        "computed_total": "21610.24"
+      },
+      "expected_findings": [],
+      "render": {
+        "path": "documents/PO-0004.pdf",
+        "medium": "pdf",
+        "scanned": false,
+        "page_count": 1
+      },
+      "overlapping_case": false
+    },
+    {
+      "id": "INV-0022",
+      "workspace": "harbor-demo-a",
+      "vendor_id": "V-002",
+      "type": "invoice",
+      "layout_id": 2,
+      "split": "development",
+      "locale": "eu",
+      "source": {
+        "vendor": {
+          "id": "V-002",
+          "name": "North Quay Fabrication",
+          "address": "127 Dockside Avenue, Port Alder, PA 19011",
+          "email": "billing02@example.test",
+          "tax_id": "FICTIONAL-TAX-0002"
+        },
+        "printed_vendor_name": "North Quay Fabrication",
+        "number": "002-26-0011",
+        "date": "2026-06-03",
+        "due_date": "2026-07-03",
+        "currency": "EUR",
+        "po_number": "HI-PO-00004",
+        "lines": [
+          {
+            "sku": "BLT-M12",
+            "description": "M12 zinc flange bolt, carton of 100",
+            "quantity": "1",
+            "unit": "box",
+            "unit_price": "24.65",
+            "line_amount": "24.65"
+          },
+          {
+            "sku": "LMP-LED",
+            "description": "Industrial LED stack light, amber",
+            "quantity": "3",
+            "unit": "ea",
+            "unit_price": "57.32",
+            "line_amount": "171.96"
+          },
+          {
+            "sku": "GSK-EPDM",
+            "description": "EPDM flange gasket, DN50, packet",
+            "quantity": "9",
+            "unit": "box",
+            "unit_price": "31.28",
+            "line_amount": "281.52"
+          },
+          {
+            "sku": "OIL-32",
+            "description": "ISO VG 32 hydraulic oil, 5 L can",
+            "quantity": "7",
+            "unit": "ea",
+            "unit_price": "40.94",
+            "line_amount": "286.58"
+          },
+          {
+            "sku": "PMP-SEAL",
+            "description": "Pump mechanical seal service kit",
+            "quantity": "4",
+            "unit": "kit",
+            "unit_price": "132.86",
+            "line_amount": "531.44"
+          },
+          {
+            "sku": "CAB-25",
+            "description": "Shielded control cable, 25 m reel",
+            "quantity": "5",
+            "unit": "roll",
+            "unit_price": "68.71",
+            "line_amount": "343.55"
+          }
+        ],
+        "subtotal": "1639.70",
+        "tax_rate": "0.07",
+        "tax": "114.08",
+        "freight": "0.00",
+        "discount": "10.00",
+        "total": "1743.78",
+        "computed_total": "1743.78"
+      },
+      "expected_findings": [],
+      "lookalike_legitimate": true,
+      "render": {
+        "path": "documents/INV-0022.pdf",
+        "medium": "pdf",
+        "scanned": true,
+        "page_count": 1
+      },
+      "overlapping_case": false
+    },
+    {
+      "id": "PO-0009",
+      "workspace": "harbor-demo-a",
+      "vendor_id": "V-003",
+      "type": "purchase_order",
+      "layout_id": 3,
+      "split": "development",
+      "locale": "plain",
+      "source": {
+        "vendor": {
+          "id": "V-003",
+          "name": "Crescent Valve Works",
+          "address": "144 Dockside Avenue, Port Alder, PA 19012",
+          "email": "billing03@example.test",
+          "tax_id": "FICTIONAL-TAX-0003"
+        },
+        "printed_vendor_name": "Crescent Valve Works",
+        "number": "HI-PO-00009",
+        "date": "2026-07-29",
+        "due_date": "2026-09-12",
+        "currency": "GBP",
+        "po_number": null,
+        "lines": [
+          {
+            "sku": "DRV-MINI",
+            "description": "Compact variable-speed motor drive",
+            "quantity": "65",
+            "unit": "ea",
+            "unit_price": "249.00",
+            "line_amount": "16185.00"
+          },
+          {
+            "sku": "BELT-500",
+            "description": "Conveyor belt section, 500 mm width",
+            "quantity": "76",
+            "unit": "m",
+            "unit_price": "36.50",
+            "line_amount": "2774.00"
+          },
+          {
+            "sku": "CAB-25",
+            "description": "Shielded control cable, 25 m reel",
+            "quantity": "67",
+            "unit": "roll",
+            "unit_price": "69.40",
+            "line_amount": "4649.80"
+          },
+          {
+            "sku": "SWX-24",
+            "description": "24 V maintained-contact selector switch",
+            "quantity": "37",
+            "unit": "ea",
+            "unit_price": "44.10",
+            "line_amount": "1631.70"
+          },
+          {
+            "sku": "HSE-10M",
+            "description": "Reinforced hydraulic hose, 10 m coil",
+            "quantity": "83",
+            "unit": "roll",
+            "unit_price": "92.80",
+            "line_amount": "7702.40"
+          },
+          {
+            "sku": "TUB-6MM",
+            "description": "Polyurethane pneumatic tube, 6 mm OD",
+            "quantity": "27",
+            "unit": "m",
+            "unit_price": "3.80",
+            "line_amount": "102.60"
+          },
+          {
+            "sku": "FLT-20U",
+            "description": "Inline particulate filter, 20 micron",
+            "quantity": "36",
+            "unit": "ea",
+            "unit_price": "58.30",
+            "line_amount": "2098.80"
+          },
+          {
+            "sku": "VLV-214",
+            "description": "Two-way stainless isolation valve",
+            "quantity": "28",
+            "unit": "ea",
+            "unit_price": "74.25",
+            "line_amount": "2079.00"
+          }
+        ],
+        "subtotal": "37223.30",
+        "tax_rate": "0",
+        "tax": "0.00",
+        "freight": "0.00",
+        "discount": "0.00",
+        "total": "37223.30",
+        "computed_total": "37223.30"
+      },
+      "expected_findings": [],
+      "render": {
+        "path": "documents/PO-0009.pdf",
+        "medium": "pdf",
+        "scanned": false,
+        "page_count": 1
+      },
+      "overlapping_case": false
+    },
+    {
+      "id": "INV-0025",
+      "workspace": "harbor-demo-a",
+      "vendor_id": "V-003",
+      "type": "invoice",
+      "layout_id": 3,
+      "split": "development",
+      "locale": "plain",
+      "source": {
+        "vendor": {
+          "id": "V-003",
+          "name": "Crescent Valve Works",
+          "address": "144 Dockside Avenue, Port Alder, PA 19012",
+          "email": "billing03@example.test",
+          "tax_id": "FICTIONAL-TAX-0003"
+        },
+        "printed_vendor_name": "Crescent Valve Works",
+        "number": "003-26-0003",
+        "date": "2026-08-22",
+        "due_date": "2026-10-21",
+        "currency": "GBP",
+        "po_number": "HI-PO-00009",
+        "lines": [
+          {
+            "sku": "DRV-MINI",
+            "description": "Compact variable-speed motor drive",
+            "quantity": "5",
+            "unit": "ea",
+            "unit_price": "249.00",
+            "line_amount": "1245.00"
+          },
+          {
+            "sku": "CAB-25",
+            "description": "Shielded control cable, 25 m reel",
+            "quantity": "4",
+            "unit": "roll",
+            "unit_price": "69.40",
+            "line_amount": "277.60"
+          },
+          {
+            "sku": "TUB-6MM",
+            "description": "Polyurethane pneumatic tube, 6 mm OD",
+            "quantity": "6",
+            "unit": "m",
+            "unit_price": "3.80",
+            "line_amount": "22.80"
+          },
+          {
+            "sku": "SWX-24",
+            "description": "24 V maintained-contact selector switch",
+            "quantity": "3",
+            "unit": "ea",
+            "unit_price": "44.10",
+            "line_amount": "132.30"
+          },
+          {
+            "sku": "HSE-10M",
+            "description": "Reinforced hydraulic hose, 10 m coil",
+            "quantity": "5",
+            "unit": "roll",
+            "unit_price": "92.80",
+            "line_amount": "464.00"
+          },
+          {
+            "sku": "BELT-500",
+            "description": "Conveyor belt section, 500 mm width",
+            "quantity": "5",
+            "unit": "m",
+            "unit_price": "36.50",
+            "line_amount": "182.50"
+          },
+          {
+            "sku": "FLT-20U",
+            "description": "Inline particulate filter, 20 micron",
+            "quantity": "9",
+            "unit": "ea",
+            "unit_price": "58.30",
+            "line_amount": "524.70"
+          }
+        ],
+        "subtotal": "2848.90",
+        "tax_rate": "0",
+        "tax": "0.00",
+        "freight": "12.00",
+        "discount": "5.00",
+        "total": "2873.30",
+        "computed_total": "2855.90"
+      },
+      "expected_findings": [
+        {
+          "kind": "total_inconsistent",
+          "difference": "17.40"
+        }
+      ],
+      "lookalike_legitimate": false,
+      "render": {
+        "path": "documents/INV-0025.pdf",
+        "medium": "pdf",
+        "scanned": false,
+        "page_count": 1
+      },
+      "overlapping_case": false
+    },
+    {
+      "id": "INV-0043",
+      "workspace": "harbor-demo-a",
+      "vendor_id": "V-004",
+      "type": "invoice",
+      "layout_id": 4,
+      "split": "development",
+      "locale": "us",
+      "source": {
+        "vendor": {
+          "id": "V-004",
+          "name": "Morrow Pneumatics",
+          "address": "161 Dockside Avenue, Port Alder, PA 19013",
+          "email": "billing04@example.test",
+          "tax_id": "FICTIONAL-TAX-0004"
+        },
+        "printed_vendor_name": "Morrow Pneumatics",
+        "number": "004-26-0010",
+        "date": "2026-07-22",
+        "due_date": "2026-08-21",
+        "currency": "CAD",
+        "po_number": "HI-PO-MISSING-00043",
+        "lines": [
+          {
+            "sku": "REG-4B",
+            "description": "Four-port air pressure regulator",
+            "quantity": "4",
+            "unit": "ea",
+            "unit_price": "89.84",
+            "line_amount": "359.36"
+          },
+          {
+            "sku": "VLV-214",
+            "description": "Two-way stainless isolation valve",
+            "quantity": "6",
+            "unit": "ea",
+            "unit_price": "74.99",
+            "line_amount": "449.94"
+          },
+          {
+            "sku": "CAB-25",
+            "description": "Shielded control cable, 25 m reel",
+            "quantity": "5",
+            "unit": "roll",
+            "unit_price": "70.09",
+            "line_amount": "350.45"
+          },
+          {
+            "sku": "CLP-440",
+            "description": "Heavy-duty rail clamp, 440 N rating",
+            "quantity": "8",
+            "unit": "ea",
+            "unit_price": "15.96",
+            "line_amount": "127.68"
+          },
+          {
+            "sku": "SNS-PX4",
+            "description": "Proximity sensor with 2 m cable",
+            "quantity": "4",
+            "unit": "ea",
+            "unit_price": "47.22",
+            "line_amount": "188.88"
+          },
+          {
+            "sku": "LMP-LED",
+            "description": "Industrial LED stack light, amber",
+            "quantity": "6",
+            "unit": "ea",
+            "unit_price": "58.48",
+            "line_amount": "350.88"
+          }
+        ],
+        "subtotal": "1827.19",
+        "tax_rate": "0",
+        "tax": "0.00",
+        "freight": "25.00",
+        "discount": "5.00",
+        "total": "1847.19",
+        "computed_total": "1847.19"
+      },
+      "expected_findings": [
+        {
+          "kind": "po_missing",
+          "po_number": "HI-PO-MISSING-00043"
+        }
+      ],
+      "lookalike_legitimate": false,
+      "render": {
+        "path": "documents/INV-0043.pdf",
+        "medium": "pdf",
+        "scanned": false,
+        "page_count": 1
+      },
+      "overlapping_case": false
+    },
+    {
+      "id": "PO-0039",
+      "workspace": "harbor-demo-b",
+      "vendor_id": "V-013",
+      "type": "purchase_order",
+      "layout_id": 5,
+      "split": "development",
+      "locale": "us",
+      "source": {
+        "vendor": {
+          "id": "V-013",
+          "name": "Pierline Safety Systems",
+          "address": "314 Dockside Avenue, Port Alder, PA 19022",
+          "email": "billing13@example.test",
+          "tax_id": "FICTIONAL-TAX-0013"
+        },
+        "printed_vendor_name": "Pierline Safety Systems",
+        "number": "HI-PO-00039",
+        "date": "2026-08-01",
+        "due_date": "2026-09-15",
+        "currency": "GBP",
+        "po_number": null,
+        "lines": [
+          {
+            "sku": "BKT-90",
+            "description": "Right-angle mounting bracket, coated steel",
+            "quantity": "54",
+            "unit": "ea",
+            "unit_price": "19.55",
+            "line_amount": "1055.70"
+          },
+          {
+            "sku": "TUB-6MM",
+            "description": "Polyurethane pneumatic tube, 6 mm OD",
+            "quantity": "70",
+            "unit": "m",
+            "unit_price": "3.80",
+            "line_amount": "266.00"
+          },
+          {
+            "sku": "HSE-10M",
+            "description": "Reinforced hydraulic hose, 10 m coil",
+            "quantity": "86",
+            "unit": "roll",
+            "unit_price": "92.80",
+            "line_amount": "7980.80"
+          },
+          {
+            "sku": "VLV-214",
+            "description": "Two-way stainless isolation valve",
+            "quantity": "64",
+            "unit": "ea",
+            "unit_price": "74.25",
+            "line_amount": "4752.00"
+          },
+          {
+            "sku": "OIL-32",
+            "description": "ISO VG 32 hydraulic oil, 5 L can",
+            "quantity": "53",
+            "unit": "ea",
+            "unit_price": "41.35",
+            "line_amount": "2191.55"
+          },
+          {
+            "sku": "LMP-LED",
+            "description": "Industrial LED stack light, amber",
+            "quantity": "70",
+            "unit": "ea",
+            "unit_price": "57.90",
+            "line_amount": "4053.00"
+          },
+          {
+            "sku": "BLT-M12",
+            "description": "M12 zinc flange bolt, carton of 100",
+            "quantity": "49",
+            "unit": "box",
+            "unit_price": "24.90",
+            "line_amount": "1220.10"
+          },
+          {
+            "sku": "CAB-25",
+            "description": "Shielded control cable, 25 m reel",
+            "quantity": "78",
+            "unit": "roll",
+            "unit_price": "69.40",
+            "line_amount": "5413.20"
+          }
+        ],
+        "subtotal": "26932.35",
+        "tax_rate": "0",
+        "tax": "0.00",
+        "freight": "0.00",
+        "discount": "0.00",
+        "total": "26932.35",
+        "computed_total": "26932.35"
+      },
+      "expected_findings": [],
+      "render": {
+        "path": "documents/PO-0039.pdf",
+        "medium": "pdf",
+        "scanned": false,
+        "page_count": 1
+      },
+      "overlapping_case": false
+    },
+    {
+      "id": "INV-0141",
+      "workspace": "harbor-demo-b",
+      "vendor_id": "V-013",
+      "type": "invoice",
+      "layout_id": 5,
+      "split": "development",
+      "locale": "us",
+      "source": {
+        "vendor": {
+          "id": "V-013",
+          "name": "Pierline Safety Systems",
+          "address": "314 Dockside Avenue, Port Alder, PA 19022",
+          "email": "billing13@example.test",
+          "tax_id": "FICTIONAL-TAX-0013"
+        },
+        "printed_vendor_name": "Pierline Safety Systems",
+        "number": "013-26-0003",
+        "date": "2026-09-22",
+        "due_date": "2026-11-21",
+        "currency": "GBP",
+        "po_number": "HI-PO-00039",
+        "lines": [
+          {
+            "sku": "VLV-214",
+            "description": "Two-way stainless isolation valve",
+            "quantity": "69",
+            "unit": "ea",
+            "unit_price": "74.25",
+            "line_amount": "5123.25"
+          },
+          {
+            "sku": "HSE-10M",
+            "description": "Reinforced hydraulic hose, 10 m coil",
+            "quantity": "7",
+            "unit": "roll",
+            "unit_price": "92.80",
+            "line_amount": "649.60"
+          },
+          {
+            "sku": "TUB-6MM",
+            "description": "Polyurethane pneumatic tube, 6 mm OD",
+            "quantity": "8",
+            "unit": "m",
+            "unit_price": "3.80",
+            "line_amount": "30.40"
+          },
+          {
+            "sku": "OIL-32",
+            "description": "ISO VG 32 hydraulic oil, 5 L can",
+            "quantity": "3",
+            "unit": "ea",
+            "unit_price": "41.35",
+            "line_amount": "124.05"
+          },
+          {
+            "sku": "BLT-M12",
+            "description": "M12 zinc flange bolt, carton of 100",
+            "quantity": "4",
+            "unit": "box",
+            "unit_price": "24.90",
+            "line_amount": "99.60"
+          }
+        ],
+        "subtotal": "6026.90",
+        "tax_rate": "0",
+        "tax": "0.00",
+        "freight": "0.00",
+        "discount": "0.00",
+        "total": "6026.90",
+        "computed_total": "6026.90"
+      },
+      "expected_findings": [
+        {
+          "kind": "quantity_mismatch",
+          "line_index": 0,
+          "po_number": "HI-PO-00039"
+        },
+        {
+          "kind": "duplicate_invoice",
+          "duplicate_of": "INV-0135"
+        }
+      ],
+      "lookalike_legitimate": false,
+      "render": {
+        "path": "documents/INV-0141.pdf",
+        "medium": "pdf",
+        "scanned": true,
+        "page_count": 1
+      },
+      "overlapping_case": true
+    }
+  ]
+}

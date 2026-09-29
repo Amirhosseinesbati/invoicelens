@@ -1,0 +1,61 @@
+services:
+  db:
+    image: postgres:17.11-alpine3.24
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-invoicelens}
+      POSTGRES_USER: ${POSTGRES_USER:-invoicelens}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-invoicelens} -d ${POSTGRES_DB:-invoicelens}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      INVOICELENS_MODE: ${INVOICELENS_MODE:-CONNECTED}
+      INVOICELENS_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-invoicelens}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/${POSTGRES_DB:-invoicelens}
+      INVOICELENS_STORAGE_ROOT: /app/data/storage
+      INVOICELENS_CHECKPOINT_PATH: /app/data/checkpoints.sqlite3
+      INVOICELENS_SECRET_KEY: ${INVOICELENS_SECRET_KEY:?Set INVOICELENS_SECRET_KEY in .env}
+      INVOICELENS_COOKIE_SECURE: ${INVOICELENS_COOKIE_SECURE:-false}
+      INVOICELENS_ALLOWED_ORIGIN: ${INVOICELENS_ALLOWED_ORIGIN:-http://127.0.0.1:5789}
+      INVOICELENS_OPENAI_MODEL: ${INVOICELENS_OPENAI_MODEL:-}
+      INVOICELENS_OPENAI_API_KEY: ${INVOICELENS_OPENAI_API_KEY:-}
+      INVOICELENS_OPENAI_MAX_OUTPUT_TOKENS: ${INVOICELENS_OPENAI_MAX_OUTPUT_TOKENS:-2048}
+      INVOICELENS_OCR_LANGUAGE: ${INVOICELENS_OCR_LANGUAGE:-eng}
+      INVOICELENS_AUTO_WORKER: ${INVOICELENS_AUTO_WORKER:-true}
+    volumes:
+      - storage_data:/app/data
+    ports:
+      - "127.0.0.1:8790:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:5789:5173"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  storage_data:
