@@ -7,6 +7,7 @@ from fastapi.testclient import TestClient
 
 _temp_root = Path(__file__).resolve().parents[2] / "tmp"
 try:
+    _temp_root.mkdir(parents=True, exist_ok=True)
     _test_root = Path(tempfile.mkdtemp(prefix="invoicelens-backend-", dir=_temp_root))
     os.environ["TMP"] = str(_temp_root)
     os.environ["TEMP"] = str(_temp_root)
