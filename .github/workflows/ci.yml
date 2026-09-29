@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       INVOICELENS_MODE: DEMO
-      INVOICELENS_DATABASE_URL: sqlite:///${{ runner.temp }}/invoicelens-ci.db
-      INVOICELENS_STORAGE_ROOT: ${{ runner.temp }}/invoicelens-storage
-      INVOICELENS_CHECKPOINT_PATH: ${{ runner.temp }}/invoicelens-checkpoints.sqlite
+      INVOICELENS_DATABASE_URL: sqlite:////tmp/invoicelens-ci.db
+      INVOICELENS_STORAGE_ROOT: /tmp/invoicelens-storage
+      INVOICELENS_CHECKPOINT_PATH: /tmp/invoicelens-checkpoints.sqlite
       INVOICELENS_SECRET_KEY: ci-only-secret-not-for-deployment
       INVOICELENS_AUTO_WORKER: "false"
     steps:
       - uses: actions/checkout@v6
-      - uses: astral-sh/setup-uv@v9
+      - uses: astral-sh/setup-uv@v9.0.0
         with:
           python-version: "3.12"
       - name: Install OCR and raster tools
