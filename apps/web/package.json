@@ -9,6 +9,7 @@
     "build": "tsc -b && vite build",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
+    "test": "node --test tests/*.test.mjs",
     "check:api": "node scripts/check-openapi-strict.mjs",
     "preview": "vite preview --host 0.0.0.0"
   },

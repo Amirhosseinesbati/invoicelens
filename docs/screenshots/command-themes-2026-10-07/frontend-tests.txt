@@ -1,0 +1,25 @@
+Γ£ö production cannot activate experimental visuals through a copied preview URL (1.2349ms)
+Γ£ö preview links preserve the document identity and only accept known directions (0.592ms)
+Γ£ö pre-paint defaults to dark, rejects corruption and preserves valid preferences (6.9856ms)
+Γ£ö only System watches OS changes; explicit preference stops following the OS (2.8398ms)
+Γ£ö unavailable storage still applies a session preference without throwing (1.3533ms)
+Γ£ö cross-tab input is validated; stable snapshots avoid unrelated renders (1.3379ms)
+Γ£ö core text, subtle labels and primary controls meet 4.5:1 in both semantic palettes (2.6236ms)
+Γ£ö processing includes queued and uploaded records; retry includes cancellation (1.0885ms)
+Γ£ö priority sorts findings then oldest receipt without changing cached records (12.8975ms)
+Γ£ö search and type combine with stage; cleared search returns all records (0.2716ms)
+Γ£ö stage links validate query parameters and respect a workspace default (0.2137ms)
+Γ£ö profile import roundtrips, trims labels and drops unrecognized fields (0.3485ms)
+Γ£ö profile rejects unsupported versions, malformed choices and excessive labels (0.4305ms)
+Γ£ö browser preferences are scoped; corrupted or inaccessible storage falls back (0.3375ms)
+Γ£ö intake deduplicates selection and preserves the existing batch (0.389ms)
+Γ£ö intake rejects oversized, empty and unsupported files before submission (0.4259ms)
+Γ£ö intake never silently truncates a batch at the limit (0.6291ms)
+Γä╣ tests 17
+Γä╣ suites 0
+Γä╣ pass 17
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 207.0337

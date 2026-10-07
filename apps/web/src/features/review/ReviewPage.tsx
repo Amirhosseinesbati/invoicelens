@@ -1,17 +1,20 @@
 import { useCallback, useRef, useState, type PointerEvent } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { ArrowLeft, ArrowUpRight, Columns2, FileText, RotateCcw } from 'lucide-react'
+import { AlertCircle, ArrowLeft, ChevronRight, Columns2, FileText, RotateCcw } from 'lucide-react'
 import { api } from '../../api/client'
 import type { Finding } from '../../api/types'
 import { ErrorState, LoadingState, StatusPill } from '../../components/States'
-import { displayError, downloadBlob, kindLabel, statusLabel, statusTone } from '../../lib/format'
+import { displayError, downloadBlob, formatMoney, initials, kindLabel, statusLabel, statusTone } from '../../lib/format'
 import { SourceViewer } from './SourceViewer'
-import { DataPanel } from './DataPanel'
+import { reviewDesignHref, type ReviewDesign } from '../../lib/design-lab'
+import { DataPanel, type ReviewTab } from './DataPanel'
 
-export function ReviewPage({ id, readOnly, onBack }: { id: string; readOnly: boolean; onBack: () => void }) {
+export function ReviewPage({ id, design, previewDesign, readOnly, onBack }: { id: string; design?: ReviewDesign; previewDesign?: ReviewDesign; readOnly: boolean; onBack: () => void }) {
   const queryClient = useQueryClient()
   const workbenchRef = useRef<HTMLDivElement>(null)
-  const [split, setSplit] = useState(52)
+  const [split, setSplit] = useState(design === 'command' ? 60 : design === 'studio' ? 56 : 54)
+  const [mobilePane, setMobilePane] = useState<'source' | 'record'>('record')
+  const [tab, setTab] = useState<ReviewTab>(design === 'command' ? 'findings' : 'record')
   const [selectedField, setSelectedField] = useState<string | null>(null)
   const [pageNumber, setPageNumber] = useState(1)
   const [decisionPendingId, setDecisionPendingId] = useState<string | null>(null)
@@ -47,14 +50,14 @@ export function ReviewPage({ id, readOnly, onBack }: { id: string; readOnly: boo
     } catch (error) { setExportError(error) } finally { setExportPending(null) }
   }
   const startResize = (event: PointerEvent<HTMLDivElement>) => {
-    if (window.matchMedia('(max-width: 920px)').matches) return
+    if (window.matchMedia('(max-width: 1000px)').matches) return
     event.preventDefault()
     const divider = event.currentTarget
     divider.setPointerCapture(event.pointerId)
     const move = (pointer: globalThis.PointerEvent) => {
       const rect = workbenchRef.current?.getBoundingClientRect()
       if (!rect) return
-      setSplit(Math.max(34, Math.min(68, (pointer.clientX - rect.left) / rect.width * 100)))
+      setSplit(Math.max(34, Math.min(68, design === 'studio' ? (1 - (pointer.clientX - rect.left) / rect.width) * 100 : (pointer.clientX - rect.left) / rect.width * 100)))
     }
     const stop = () => { divider.removeEventListener('pointermove', move); divider.removeEventListener('pointerup', stop); divider.removeEventListener('pointercancel', stop) }
     divider.addEventListener('pointermove', move)
@@ -65,19 +68,30 @@ export function ReviewPage({ id, readOnly, onBack }: { id: string; readOnly: boo
   if (detail.isPending) return <main className="page"><LoadingState label="Opening source and extracted record…" /></main>
   if (detail.isError) return <main className="page"><button className="text-action back-link" onClick={onBack}><ArrowLeft size={16} /> Back to queue</button><ErrorState error={detail.error} onRetry={() => detail.refetch()} /></main>
   const document = detail.data
-  const selectedEvidence = selectedField?.startsWith('lines.')
-    ? (() => { const [, index, property] = selectedField.split('.'); return document.lines[Number(index)]?.evidence?.[property] ?? null })()
-    : selectedField ? document.fields[selectedField] ?? null : null
-  return <main className="review-page">
-    <div className="review-topline"><button className="text-action back-link" onClick={onBack}><ArrowLeft size={17} /> Review queue</button><span className="review-top-separator">/</span><span>{document.filename}</span><button className="icon-button review-refresh" onClick={() => detail.refetch()} title="Refresh document" aria-label="Refresh document"><RotateCcw size={16} /></button></div>
-    <div className="review-header"><div className="review-title"><span className="section-kicker">DOCUMENT / {kindLabel(document.kind).toUpperCase()}</span><h1>{document.fields.number?.value || document.fields.invoice_number?.value || document.filename}</h1><div className="review-meta"><StatusPill tone={statusTone(document.status)}>{statusLabel(document.status)}</StatusPill><span>Version {document.version}</span><span>{document.pages.length} page{document.pages.length === 1 ? '' : 's'}</span><span>{document.findings.length} finding{document.findings.length === 1 ? '' : 's'}</span></div></div><div className="review-header-actions">{!readOnly && document.version > 0 && !['queued', 'processing', 'failed', 'cancelled'].includes(document.status) && <button className="button button-secondary" disabled={revalidate.isPending} onClick={() => revalidate.mutate()}><RotateCcw size={15} /> {revalidate.isPending ? 'Checking…' : 'Revalidate'}</button>}<div className="review-header-note"><FileText size={18} /><span>Evidence-linked<br />review record</span><ArrowUpRight size={16} /></div></div></div>
+  const openFindings = document.findings.filter((finding) => ['open', 'pending', 'needs_review'].includes(finding.status))
+  const firstLineFinding = openFindings.find((finding) => Number.isInteger(finding.details?.invoice_line_index))
+  const activeField = selectedField ?? (firstLineFinding ? `lines.${firstLineFinding.details.invoice_line_index}.unit_price` : document.fields.total ? 'total' : null)
+  const vendor = document.fields.vendor?.value || document.fields.vendor_name?.value || document.vendor || 'Vendor not extracted'
+  const selectedEvidence = activeField?.startsWith('lines.')
+    ? (() => { const [, index, property] = activeField.split('.'); return document.lines[Number(index)]?.evidence?.[property] ?? null })()
+    : activeField ? document.fields[activeField] ?? null : null
+  return <main className={`review-page view-${mobilePane}`} onKeyDown={(event) => { if (event.key === 'Escape' && mobilePane === 'source') { setMobilePane('record'); window.document.querySelector<HTMLButtonElement>('.mobile-review-switch button:last-child')?.focus() } }}>
+    <div className="review-topline"><button className="text-action back-link" onClick={onBack}><ArrowLeft size={15} /> Review queue</button><ChevronRight size={13} /><span>{kindLabel(document.kind)}</span><span className="review-file-caption">{document.filename}</span><button className="icon-button review-refresh" disabled={detail.isFetching} onClick={() => detail.refetch()} title="Refresh document" aria-label="Refresh document"><RotateCcw size={15} className={detail.isFetching ? 'spin' : ''} /></button></div>
+    <div className="review-header">
+      <span className="review-vendor-mark" aria-hidden="true">{initials(String(vendor))}</span>
+      <div className="review-title">{design && <span className="design-masthead-eyebrow">{design === 'command' ? 'DOCUMENT COMMAND' : 'INVOICE / REVIEW EDITION'}</span>}<h1>{design === 'studio' ? document.fields.number?.value || document.number || document.filename : vendor}</h1><div className="review-meta">{design === 'studio' && <strong>{vendor}</strong>}<span>{kindLabel(document.kind)} {document.fields.number?.value || document.fields.invoice_number?.value || document.number || document.filename}</span><span className="review-meta-dot" /><span>Version {document.version}</span><StatusPill tone={statusTone(document.status)}>{statusLabel(document.status)}</StatusPill></div></div>
+      <div className="review-amount"><strong>{formatMoney(document.fields.total?.value ?? document.total, document.fields.currency?.value ?? document.currency)}</strong><span>{document.fields.currency?.value || document.currency || 'Currency unavailable'} · Stated total</span></div>
+      {!readOnly && document.version > 0 && !['queued', 'processing', 'failed', 'cancelled'].includes(document.status) && <button className="button button-secondary review-revalidate" disabled={revalidate.isPending} onClick={() => revalidate.mutate()}><RotateCcw size={14} className={revalidate.isPending ? 'spin' : ''} /> {revalidate.isPending ? 'Checking…' : 'Revalidate'}</button>}
+    </div>
+    {openFindings.length > 0 && <div className="review-attention"><AlertCircle size={15} /><span><strong>{openFindings.length} open finding{openFindings.length === 1 ? '' : 's'}</strong><span className="attention-description">{openFindings[0].message}</span></span><button onClick={() => { setTab('findings'); setMobilePane('record') }}>Review finding{openFindings.length === 1 ? '' : 's'}<ChevronRight size={14} /></button></div>}
     {revalidate.isError && <div className="notice notice-red" role="alert">{displayError(revalidate.error)}</div>}
     {['queued', 'processing'].includes(document.status) && <div className="notice notice-blue"><RotateCcw size={17} /> Extraction is still running. This view will refresh as pages complete.</div>}
     {document.status === 'failed' && <div className="notice notice-red"><FileText size={17} /> Processing failed. Open Batch intake to inspect the job error and retry.</div>}
-    <div className="workbench" ref={workbenchRef} style={{ '--source-width': `${split}%` } as React.CSSProperties}>
-      <SourceViewer document={document} selectedField={selectedField} selectedEvidence={selectedEvidence} pageNumber={pageNumber} onPageChange={changePage} />
-      <div className="panel-resizer" role="separator" tabIndex={0} aria-label="Resize source and data panels" aria-orientation="vertical" aria-valuenow={split} aria-valuemin={34} aria-valuemax={68} onPointerDown={startResize} onKeyDown={(event) => { if (event.key === 'ArrowLeft') { event.preventDefault(); setSplit((value) => Math.max(34, value - 3)) } if (event.key === 'ArrowRight') { event.preventDefault(); setSplit((value) => Math.min(68, value + 3)) } }}><Columns2 size={15} /></div>
-      <DataPanel document={document} selectedField={selectedField} onSelectField={setSelectedField} onOpenMatch={(matchedId) => { window.location.hash = `/document/${encodeURIComponent(matchedId)}` }} readOnly={readOnly} onCorrect={onCorrect} correctionPending={correct.isPending} correctionError={correct.error} onDecide={onDecide} decisionPendingId={decisionPendingId} decisionError={decide.error} onDecideMatch={onDecideMatch} matchPendingId={matchPendingId} matchDecisionError={decideMatch.error} onDecideLineMatch={onDecideLineMatch} lineMatchPendingIndex={lineMatchPendingIndex} lineMatchDecisionError={decideLineMatch.error} onApprove={() => approve.mutate(document.version)} approvalPending={approve.isPending} approvalError={approve.error} onExport={onExport} exportPending={exportPending} exportError={exportError} />
+    <div className="mobile-review-switch" role="group" aria-label="Review panel"><button aria-pressed={mobilePane === 'source'} onClick={() => setMobilePane('source')}>Document</button><button aria-pressed={mobilePane === 'record'} onClick={() => setMobilePane('record')}>Details</button></div>
+    <div className={'workbench mobile-pane-' + mobilePane} ref={workbenchRef} style={{ '--source-width': `${split}%` } as React.CSSProperties}>
+      <SourceViewer document={document} selectedField={activeField} selectedEvidence={selectedEvidence} pageNumber={pageNumber} onPageChange={changePage} />
+      <div className="panel-resizer" role="separator" tabIndex={0} aria-label="Resize source and data panels" aria-orientation="vertical" aria-valuenow={split} aria-valuemin={34} aria-valuemax={68} onPointerDown={startResize} onKeyDown={(event) => { if (event.key === 'ArrowLeft') { event.preventDefault(); setSplit((value) => Math.max(34, value + (design === 'studio' ? 3 : -3))) } if (event.key === 'ArrowRight') { event.preventDefault(); setSplit((value) => Math.min(68, value + (design === 'studio' ? -3 : 3))) } }}><Columns2 size={15} /></div>
+      <DataPanel design={design} tab={tab} onTabChange={setTab} document={document} selectedField={activeField} onSelectField={(field) => { setSelectedField(field); if (window.matchMedia('(max-width: 1000px)').matches) { setMobilePane('source'); workbenchRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' }) } }} onOpenMatch={(matchedId) => { window.location.hash = reviewDesignHref(matchedId, previewDesign) }} readOnly={readOnly} onCorrect={onCorrect} correctionPending={correct.isPending} correctionError={correct.error} onDecide={onDecide} decisionPendingId={decisionPendingId} decisionError={decide.error} onDecideMatch={onDecideMatch} matchPendingId={matchPendingId} matchDecisionError={decideMatch.error} onDecideLineMatch={onDecideLineMatch} lineMatchPendingIndex={lineMatchPendingIndex} lineMatchDecisionError={decideLineMatch.error} onApprove={() => approve.mutate(document.version)} approvalPending={approve.isPending} approvalError={approve.error} onExport={onExport} exportPending={exportPending} exportError={exportError} />
     </div>
     {correct.isSuccess && <div className="sr-only" role="status">Correction saved and validation rerun.</div>}
     {approve.isSuccess && <div className="sr-only" role="status">Document version approved.</div>}

@@ -1,0 +1,28 @@
+/* Semantic product tokens also paint the page before React downloads. */
+:root,:root[data-theme="dark"] {
+  color-scheme:dark;
+  --il-canvas:#0c1220; --il-rail:#080d17; --il-surface:#151f33; --il-raised:#1d2941; --il-inset:#101a2d;
+  --il-ink:#edf1fd; --il-muted:#a7b5cf; --il-faint:#889bb9; --il-line:#33435e; --il-hover:#23344e;
+  --il-accent:#8db8ff; --il-accent-hover:#b4d0ff; --il-accent-ink:#101f38; --il-accent-soft:#253b59;
+  --il-success:#a1dfc1; --il-success-soft:#213c35; --il-warning:#f0cb8f; --il-warning-soft:#3c3228;
+  --il-danger:#ffb4a7; --il-danger-soft:#402d32; --il-evidence:#a6b6ff; --il-inspector:#222c49;
+  --il-source:#132036; --il-source-light:#354969; --il-shadow:#02071455; --il-paper-shadow:#0008;
+  --il-chart-blue:#8db8ff; --il-chart-amber:#e6b876; --il-chart-green:#7dcdaa; --il-chart-red:#ed9c91; --il-chart-neutral:#70839f;
+  --il-chart-axis:#a7b5cf; --il-chart-tooltip:#1d2941;
+}
+:root[data-theme="light"] {
+  color-scheme:light;
+  --il-canvas:#f1f4f9; --il-rail:#e5ebf5; --il-surface:#fff; --il-raised:#f7f9fd; --il-inset:#edf2fa;
+  --il-ink:#17263e; --il-muted:#4d607c; --il-faint:#526581; --il-line:#ced8e6; --il-hover:#e8eef8;
+  --il-accent:#315ec8; --il-accent-hover:#234898; --il-accent-ink:#fff; --il-accent-soft:#e4edff;
+  --il-success:#24684d; --il-success-soft:#e5f3ec; --il-warning:#865617; --il-warning-soft:#fff1dc;
+  --il-danger:#a2382d; --il-danger-soft:#ffeae5; --il-evidence:#4a58bb; --il-inspector:#eaf0ff;
+  --il-source:#dbe4f1; --il-source-light:#f4f7fd; --il-shadow:#23406512; --il-paper-shadow:#20385730;
+  --il-chart-blue:#426ed9; --il-chart-amber:#b17623; --il-chart-green:#2b8665; --il-chart-red:#c66352; --il-chart-neutral:#7d8ea8;
+  --il-chart-axis:#4d607c; --il-chart-tooltip:#fff;
+}
+:root[data-accent="teal"] { --il-accent:#86ddcc; --il-accent-hover:#b3f0e3; --il-accent-soft:#213e42; }
+:root[data-theme="light"][data-accent="teal"] { --il-accent:#087365; --il-accent-hover:#07584e; --il-accent-soft:#def2eb; }
+:root[data-accent="copper"] { --il-accent:#eeb590; --il-accent-hover:#ffd0b0; --il-accent-soft:#42352f; }
+:root[data-theme="light"][data-accent="copper"] { --il-accent:#9c4e26; --il-accent-hover:#793b1a; --il-accent-soft:#fce9dc; }
+html,body { background:var(--il-canvas); color:var(--il-ink); }

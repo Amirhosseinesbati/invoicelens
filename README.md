@@ -2,7 +2,7 @@
 
 > An evidence-first invoice review workbench.
 
-![InvoiceLens product interface](docs/screenshots/03-source-evidence-1440.png)
+![InvoiceLens production Command review — synthetic demonstration](docs/screenshots/command-themes-2026-10-07/document-dark-1440.png)
 
 [Getting started](#getting-started) · [Architecture](docs/ARCHITECTURE.md) · [Evaluation](docs/EVALUATION.md) · [Security](docs/SECURITY.md)
 
@@ -31,6 +31,20 @@ FastAPI · React · LangGraph · PostgreSQL · OCR
 55 integration tests passed; 300/300 synthetic documents processed in the final offline run. Finding precision remains below the release target; details are in the evaluation report. The included demo uses synthetic data and local simulators. Deployment and live-provider limits are documented in [implementation status](docs/IMPLEMENTATION_STATUS.md).
 
 ## Getting started
+
+### October workspace upgrade
+
+The workbench now includes an actionable operations desk, searchable/filterable review queue, mobile source/record controls, keyboard review tabs, and reusable workspace appearance profiles with validated JSON import/export. Demo credentials are offered only after the API confirms DEMO mode. See [upgrade and client handoff](docs/UI_UPGRADE.md) for configuration boundaries and verification. The subsequent [flagship review redesign](docs/FLAGSHIP_DESIGN.md) adds a focused finance workspace, evidence-linked line review, responsive document reader and persistent version approval controls, with actual before/after screenshots.
+
+The selected **Command** direction now spans all seven production workflows, with **Dark / Light / System**, persistent accessible theme controls and native source colors. See [the production theme architecture, client handoff and final desktop/mobile evidence](docs/COMMAND_THEMES.md). The [reversible A/B experiments](docs/DESIGN_LAB.md) remain available in development; their Production link returns to the selected design.
+
+For a preview using already installed dependencies on dedicated ports, run:
+
+```powershell
+pwsh -NoProfile -File scripts/preview.ps1
+```
+
+Open [the synthetic preview](http://127.0.0.1:4312). It uses an isolated `data/preview` workspace and the API on port 8312. The launcher does not install packages or reset the original demo.
 
 Run the local demonstration from the repository root using the project-specific instructions below. External service credentials are needed only for connected integrations.
 
@@ -82,4 +96,3 @@ Copy `.env.example` to `.env` and set unique `POSTGRES_PASSWORD` and `INVOICELEN
 | `docs` | Product, architecture, API, operations, security, evaluation, and handover |
 
 The [product scope](docs/PRODUCT.md), [architecture](docs/ARCHITECTURE.md), [data card](docs/DATA_CARD.md), [evaluation](docs/EVALUATION.md), [portfolio case study](docs/PORTFOLIO.md), [commercialization guide](docs/COMMERCIALIZATION.md), and [handover](docs/HANDOVER.md) give the intended use and the evidence for what works today.
-

@@ -1,0 +1,17 @@
+{
+  "base": "http://127.0.0.1:4312",
+  "browser": "user local Chrome, isolated headless session",
+  "outcome": "passed",
+  "completed": [
+    "DEMO-aware login and invalid credentials recover",
+    "client rejection, native intake and server deduplication",
+    "global search, empty filter, clear and stage navigation",
+    "profile apply, reload, invalid import, export and reset",
+    "source evidence, keyboard tabs, version approval and repeated XLSX",
+    "390px mobile navigation, source switching and no horizontal overflow",
+    "injected API error recovers on retry"
+  ],
+  "pageErrors": [],
+  "qaFailure": null,
+  "finishedAt": "2026-10-06T15:51:19.884Z"
+}

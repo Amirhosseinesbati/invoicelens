@@ -1,0 +1,13 @@
+{
+  "outcome": "passed",
+  "checks": {
+    "bootstrapCopied": true,
+    "tokensCopied": true,
+    "bootstrapBeforeReact": true,
+    "productionCommandIncluded": true,
+    "experimentalStudioStylesExcluded": true,
+    "prototypeSelectorExcluded": true,
+    "realPriceComparisonIncluded": true
+  },
+  "finishedAt": "2026-10-07T19:48:52.357Z"
+}

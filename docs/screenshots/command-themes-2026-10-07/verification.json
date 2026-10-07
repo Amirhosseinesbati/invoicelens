@@ -1,0 +1,107 @@
+{
+  "project": "InvoiceLens",
+  "completedAt": "2026-10-07T19:53:21.091Z",
+  "scope": "Local production Command design and Dark/Light/System across all seven workflows",
+  "syntheticDemo": true,
+  "checks": {
+    "typescript": {
+      "outcome": "passed",
+      "command": "node node_modules/typescript/bin/tsc --noEmit"
+    },
+    "eslint": {
+      "outcome": "passed",
+      "command": "node node_modules/eslint/bin/eslint.js ."
+    },
+    "frontend": {
+      "outcome": "passed",
+      "passed": 17,
+      "failed": 0,
+      "evidence": "frontend-tests.txt"
+    },
+    "build": {
+      "outcome": "passed",
+      "vite": "7.3.6",
+      "modules": 1579,
+      "durationSeconds": 3.73,
+      "evidence": "build-result.txt"
+    },
+    "assets": {
+      "outcome": "passed",
+      "evidence": "production-assets.json"
+    },
+    "apiContract": {
+      "outcome": "passed",
+      "routes": 22,
+      "typedSchemas": 26
+    },
+    "themeBrowser": {
+      "outcome": "passed",
+      "groups": 10,
+      "pageErrors": 0,
+      "evidence": "qa-result.json"
+    },
+    "functionalBrowser": {
+      "outcome": "passed",
+      "groups": 7,
+      "pageErrors": 0,
+      "evidence": "../command-regression-2026-10-07/qa-result.json"
+    },
+    "archivedBrowser": {
+      "outcome": "passed",
+      "groups": 5,
+      "pageErrors": 0,
+      "evidence": "../archive-regression-2026-10-07/qa-result.json"
+    },
+    "visualInspection": {
+      "outcome": "passed",
+      "browser": "User's local Chrome, isolated headless context",
+      "widths": [
+        390,
+        768,
+        1024,
+        1440
+      ],
+      "themes": [
+        "dark",
+        "light"
+      ]
+    },
+    "library": {
+      "outcome": "saved",
+      "newSyntheticCaptures": 6,
+      "visibility": "private",
+      "priorImagesUploadedAgain": false
+    }
+  },
+  "unrun": [
+    "Full backend integration suite",
+    "Docker/deployment",
+    "Bulk OCR/evaluation",
+    "Connected provider",
+    "Physical mobile devices",
+    "Formal screen-reader/WCAG audit"
+  ],
+  "preview": {
+    "command": "pwsh -NoProfile -File scripts/preview.ps1",
+    "web": "http://127.0.0.1:4312",
+    "api": "http://127.0.0.1:8312",
+    "data": "data/preview"
+  },
+  "publication": {
+    "pushed": false,
+    "committed": false,
+    "deployed": false
+  },
+  "preservedPreexistingWork": [
+    ".github/workflows/ci.yml",
+    ".gitignore",
+    "docs/HANDOVER.md",
+    "docs/IMPLEMENTATION_STATUS.md",
+    "tests/backend/conftest.py",
+    "teaser_assets/"
+  ],
+  "notes": [
+    "Whole-repository git diff --check still reports preexisting blank EOF lines in HANDOVER and IMPLEMENTATION_STATUS; scoped edited tracked files pass.",
+    "Screenshots and browser workflow checks use the local Vite preview; production bundle composition and bootstrap ordering were separately checked."
+  ]
+}

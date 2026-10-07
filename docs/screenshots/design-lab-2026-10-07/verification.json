@@ -1,0 +1,60 @@
+{
+  "project": "InvoiceLens",
+  "date": "2026-10-07",
+  "passed": {
+    "typescript": "node node_modules/typescript/bin/tsc --noEmit",
+    "lint": "node node_modules/eslint/bin/eslint.js .",
+    "unitTests": {
+      "command": "node --test tests/*.test.mjs",
+      "passed": 12,
+      "failed": 0
+    },
+    "build": {
+      "commands": [
+        "node node_modules/typescript/bin/tsc -b",
+        "node node_modules/vite/bin/vite.js build"
+      ],
+      "vite": "7.3.6",
+      "modules": 1576,
+      "seconds": 5.44,
+      "prototypeComponentsAndStylesInProduction": false
+    },
+    "localUI": {
+      "command": "node scripts/qa-design-lab.mjs",
+      "groups": 5,
+      "pageErrors": 0,
+      "desktop": [
+        1440,
+        900
+      ],
+      "mobile": [
+        390,
+        844
+      ],
+      "browser": "user local Chrome, isolated headless context"
+    }
+  },
+  "notRun": [
+    "backend integration suite",
+    "bulk OCR/evaluation",
+    "connected model provider",
+    "Docker deployment",
+    "physical mobile device",
+    "full screen-reader audit"
+  ],
+  "library": {
+    "saved": [
+      "command-desktop-1440.png",
+      "command-mobile-390.png",
+      "studio-desktop-1440.png",
+      "studio-mobile-390.png"
+    ],
+    "blockedBeforeTransfer": [],
+    "reason": "Resolved after explicit user authorization. The prepared helper was unavailable; the documented direct create batch saved the remaining three images successfully. Existing A desktop was not uploaded again."
+  },
+  "preview": {
+    "webPort": 4312,
+    "apiPort": 8312,
+    "command": "pwsh -NoProfile -File scripts/preview.ps1"
+  }
+}

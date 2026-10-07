@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { App } from './App'
 import './styles.css'
+import './workbench.css'
+import './finance-workspace.css'
+import './command-workspace.css'
+if (import.meta.env.DEV) { void import('./review-design-lab.css') }
 
 const queryClient = new QueryClient({
   defaultOptions: {

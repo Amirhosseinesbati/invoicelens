@@ -1,0 +1,14 @@
+{
+  "outcome": "passed",
+  "checks": [
+    "dark: all seven production workflows, native source and desktop overflow",
+    "dark: mobile reader/action/menu/search and 768/1024 layouts",
+    "light: all seven production workflows, native source and desktop overflow",
+    "light: mobile reader/action/menu/search and 768/1024 layouts"
+  ],
+  "pageErrors": [],
+  "failure": null,
+  "browser": "user local Chrome, isolated headless context",
+  "syntheticData": true,
+  "finishedAt": "2026-10-07T19:14:39.436Z"
+}

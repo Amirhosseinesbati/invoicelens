@@ -25,3 +25,9 @@ screenshots/tmp/
 
 # Local product brief; excluded from the public portfolio repository.
 /02-invoicelens.md
+
+# Private environment files and local publication receipts
+.env.*
+!.env.example
+!**/.env.example
+**/library-files.json

@@ -1,0 +1,20 @@
+{
+  "outcome": "passed",
+  "checks": [
+    "dark: all seven production workflows, native source and desktop overflow",
+    "dark: draft/DOM/navigation/media preserved, no business refetch, keyboard tabs and real approval barrier",
+    "dark: mobile reader/action/menu/search and 768/1024 layouts",
+    "light: all seven production workflows, native source and desktop overflow",
+    "light: draft/DOM/navigation/media preserved, no business refetch, keyboard tabs and real approval barrier",
+    "light: mobile reader/action/menu/search and 768/1024 layouts",
+    "Persisted reload, live System transitions, explicit Dark insulated from OS",
+    "Explicitly injected 503: readable in both themes and retry recovers",
+    "Storage-denied browser still switches for the session",
+    "Saved Light is applied at first paint under CSP that blocks inline scripts"
+  ],
+  "pageErrors": [],
+  "failure": null,
+  "browser": "user local Chrome, isolated headless context",
+  "syntheticData": true,
+  "finishedAt": "2026-10-07T19:44:44.343Z"
+}

@@ -49,6 +49,7 @@ async function requestBlob(path: string): Promise<Blob> {
 }
 
 export const api = {
+  health: () => request<{ status: string; mode: string }>('/api/health'),
   login: (email: string, password: string) => request<LoginResponse>('/api/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) }),
   me: () => request<User>('/api/auth/me'),
   logout: () => request<void>('/api/auth/logout', { method: 'POST' }),

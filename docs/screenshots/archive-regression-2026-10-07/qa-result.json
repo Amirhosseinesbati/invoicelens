@@ -1,0 +1,14 @@
+{
+  "outcome": "passed",
+  "completed": [
+    "command: fields, correction Escape, keyboard tabs, real approval barrier",
+    "command: mobile source, persistent action, no overflow and menu Escape",
+    "studio: fields, correction Escape, keyboard tabs, real approval barrier",
+    "studio: mobile source, persistent action, no overflow and menu Escape",
+    "Current-design escape route and zero JavaScript page errors"
+  ],
+  "pageErrors": [],
+  "failure": null,
+  "browser": "user local Chrome, isolated headless context",
+  "finishedAt": "2026-10-07T19:33:36.761Z"
+}

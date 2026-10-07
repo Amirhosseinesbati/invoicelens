@@ -1,0 +1,14 @@
+Command (from apps/web):
+node node_modules/typescript/bin/tsc -b
+node node_modules/vite/bin/vite.js build
+
+Exit code: 0
+vite v7.3.6 building client environment for production...
+transforming...
+1574 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.55 kB | gzip:   0.32 kB
+dist/assets/index-Q3Vpen5E.css   85.79 kB | gzip:  18.96 kB
+dist/assets/index-2d4JfAlF.js   369.19 kB | gzip: 109.96 kB
+built in 3.87s
